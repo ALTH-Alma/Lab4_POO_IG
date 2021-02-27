@@ -15,6 +15,8 @@ import javax.swing.JSplitPane;
 import javax.swing.JLayeredPane;
 import javax.swing.border.CompoundBorder;
 import javax.swing.BoxLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Inicio {
 
@@ -56,35 +58,34 @@ public class Inicio {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Bienvenido a StackOverflow!!");
-		lblNewLabel.setBounds(0, 29, 1178, 73);
-		lblNewLabel.setToolTipText("");
-		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 60));
-		lblNewLabel.setBackground(Color.BLACK);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblTitulo = new JLabel("Bienvenido a StackOverflow!!");
+		lblTitulo.setBounds(0, 29, 1178, 73);
+		lblTitulo.setToolTipText("");
+		lblTitulo.setForeground(Color.BLACK);
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 60));
+		lblTitulo.setBackground(Color.BLACK);
+		frame.getContentPane().add(lblTitulo);
 		
-		JButton btnNewButton = new JButton("Ingresar");
-		btnNewButton.setBounds(10, 113, 164, 48);
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnNewButton.setForeground(UIManager.getColor("InternalFrame.activeTitleForeground"));
-		btnNewButton.setBackground(UIManager.getColor("InternalFrame.activeTitleBackground"));
-		frame.getContentPane().add(btnNewButton);
+		JButton btnIniSesion = new JButton("Iniciar sesión");
+		btnIniSesion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+			}
+		});
+		btnIniSesion.setBounds(10, 113, 164, 48);
+		btnIniSesion.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnIniSesion.setForeground(UIManager.getColor("InternalFrame.activeTitleForeground"));
+		btnIniSesion.setBackground(UIManager.getColor("InternalFrame.activeTitleBackground"));
+		frame.getContentPane().add(btnIniSesion);
 		
-		JButton btnNewButton_1 = new JButton("Registarse");
-		btnNewButton_1.setBounds(10, 183, 164, 48);
-		btnNewButton_1.setForeground(UIManager.getColor("InternalFrame.activeTitleForeground"));
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnNewButton_1.setBackground(UIManager.getColor("InternalFrame.activeTitleBackground"));
-		frame.getContentPane().add(btnNewButton_1);
-		
-		JLayeredPane layeredPane = new JLayeredPane();
-		layeredPane.setBounds(0, 449, 1178, 0);
-		layeredPane.setForeground(Color.WHITE);
-		layeredPane.setBorder(new CompoundBorder());
-		layeredPane.setBackground(Color.WHITE);
-		frame.getContentPane().add(layeredPane);
-		layeredPane.setLayout(new BoxLayout(layeredPane, BoxLayout.X_AXIS));
+		JButton btnRegistro = new JButton("Registarse");
+		btnRegistro.setBounds(10, 183, 164, 48);
+		btnRegistro.setForeground(UIManager.getColor("InternalFrame.activeTitleForeground"));
+		btnRegistro.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnRegistro.setBackground(UIManager.getColor("InternalFrame.activeTitleBackground"));
+		frame.getContentPane().add(btnRegistro);
 		
 		
 	}

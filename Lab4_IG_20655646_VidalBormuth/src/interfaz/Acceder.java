@@ -20,7 +20,7 @@ import java.awt.Color;
 public class Acceder {
 
 	private JFrame frame;
-	private JTextField txtIngresarNombreDe;
+	private JTextField txtInUserName;
 	private JPasswordField passwordField;
 
 	/**
@@ -55,22 +55,22 @@ public class Acceder {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Usuario");
-		lblNewLabel.setBounds(142, 58, 60, 24);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblNomUser = new JLabel("Usuario");
+		lblNomUser.setBounds(142, 58, 60, 24);
+		lblNomUser.setHorizontalAlignment(SwingConstants.LEFT);
+		frame.getContentPane().add(lblNomUser);
 		
-		JLabel lblNewLabel_1 = new JLabel("Contraseña");
-		lblNewLabel_1.setBounds(142, 107, 89, 24);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel lblPass = new JLabel("Contraseña");
+		lblPass.setBounds(142, 107, 89, 24);
+		lblPass.setHorizontalAlignment(SwingConstants.LEFT);
+		frame.getContentPane().add(lblPass);
 		
-		txtIngresarNombreDe = new JTextField();
-		txtIngresarNombreDe.setForeground(Color.BLACK);
-		txtIngresarNombreDe.setText("");
-		txtIngresarNombreDe.setBounds(142, 81, 164, 20);
-		frame.getContentPane().add(txtIngresarNombreDe);
-		txtIngresarNombreDe.setColumns(10);
+		txtInUserName = new JTextField();
+		txtInUserName.setForeground(Color.BLACK);
+		txtInUserName.setText("");
+		txtInUserName.setBounds(142, 81, 164, 20);
+		frame.getContentPane().add(txtInUserName);
+		txtInUserName.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setToolTipText("");
@@ -78,26 +78,26 @@ public class Acceder {
 		passwordField.setBounds(142, 134, 165, 20);
 		frame.getContentPane().add(passwordField);
 		
-		JButton btnNewButton = new JButton("Ingresar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnIngresar = new JButton("Ingresar");
+		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(143, 170, 166, 23);
-		frame.getContentPane().add(btnNewButton);
+		btnIngresar.setBounds(143, 170, 166, 23);
+		frame.getContentPane().add(btnIngresar);
 		
-		JLabel lblNewLabel_2 = new JLabel("Acceso de usuario:");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel_2.setBounds(73, 11, 292, 41);
-		frame.getContentPane().add(lblNewLabel_2);
+		JLabel lbltituloIS = new JLabel("Acceso de usuario:");
+		lbltituloIS.setHorizontalAlignment(SwingConstants.CENTER);
+		lbltituloIS.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lbltituloIS.setBounds(73, 11, 292, 41);
+		frame.getContentPane().add(lbltituloIS);
 		
-		JButton btnNewButton_1 = new JButton("Volver");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(143, 204, 164, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		btnVolver.setBounds(143, 204, 164, 23);
+		frame.getContentPane().add(btnVolver);
 	}
 }

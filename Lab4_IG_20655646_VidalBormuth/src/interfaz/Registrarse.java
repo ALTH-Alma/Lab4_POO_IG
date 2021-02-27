@@ -14,8 +14,8 @@ import javax.swing.SwingConstants;
 public class Registrarse {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textFieldNewPass;
+	private JTextField textFieldNewUserName;
 
 	/**
 	 * Launch the application.
@@ -49,48 +49,48 @@ public class Registrarse {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Registro de usuario:");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel.setBounds(77, 11, 292, 41);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblTituloR = new JLabel("Registro de usuario:");
+		lblTituloR.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTituloR.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTituloR.setBounds(77, 11, 292, 41);
+		frame.getContentPane().add(lblTituloR);
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("Nombre de usuario");
-		lblNewLabel_1.setBounds(142, 58, 111, 24);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel lblNomNU = new JLabel("Nombre de usuario");
+		lblNomNU.setBounds(142, 58, 111, 24);
+		lblNomNU.setHorizontalAlignment(SwingConstants.LEFT);
+		frame.getContentPane().add(lblNomNU);
 		
-		JLabel lblNewLabel_2 = new JLabel("Contraseña");
-		lblNewLabel_2.setBounds(142, 107, 89, 24);
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
-		frame.getContentPane().add(lblNewLabel_2);
+		JLabel lblPass = new JLabel("Contraseña");
+		lblPass.setBounds(142, 107, 89, 24);
+		lblPass.setHorizontalAlignment(SwingConstants.LEFT);
+		frame.getContentPane().add(lblPass);
 		
-		textField = new JTextField();
-		textField.setBounds(142, 130, 166, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldNewPass = new JTextField();
+		textFieldNewPass.setBounds(142, 130, 166, 20);
+		frame.getContentPane().add(textFieldNewPass);
+		textFieldNewPass.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(142, 82, 166, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textFieldNewUserName = new JTextField();
+		textFieldNewUserName.setBounds(142, 82, 166, 20);
+		frame.getContentPane().add(textFieldNewUserName);
+		textFieldNewUserName.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Registrarse");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnRegister = new JButton("Registrarse");
+		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(143, 170, 166, 23);
-		frame.getContentPane().add(btnNewButton);
+		btnRegister.setBounds(143, 170, 166, 23);
+		frame.getContentPane().add(btnRegister);
 		
-		JButton btnNewButton_1 = new JButton("Volver");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnVolver1 = new JButton("Volver");
+		btnVolver1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(143, 204, 164, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		btnVolver1.setBounds(143, 204, 164, 23);
+		frame.getContentPane().add(btnVolver1);
 		
 
 	}
