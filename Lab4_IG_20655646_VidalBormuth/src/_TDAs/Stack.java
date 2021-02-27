@@ -2,7 +2,7 @@ package _TDAs;
 
 import java.util.List;
 
-
+//import Service.MostrarListStackService;
 
 /**
  * Clase que representa un stack.
@@ -83,6 +83,15 @@ public class Stack  {
 	}
 	
 	
+	/**
+	 * Muestra un stack y sus atributos. 
+	 */
+//	public void mostrarStack() {
+//		MostrarListStackService sl = new MostrarListStackService();
+//		System.out.println("\n___________________________Stack Overflow____________________________ ");
+//		sl.mostrarUsuarios(usuarios);
+//		sl.mostrarPreguntas(preguntas);
+//	}
 
 	
 	

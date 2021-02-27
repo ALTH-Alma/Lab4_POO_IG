@@ -3,7 +3,8 @@ package _TDAs;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//import Service.EtiquetasService;
+//import Service.MostrarListStackService;
 
 
 
@@ -132,7 +133,43 @@ public class Pregunta extends ComunRP{
 	}
 	
 
-	
+	/**
+	 * Muestra una pregunta con todos sus elementos.
+	 */
+//	@Override
+//	public void mostrarComun() {
+//		
+//		EtiquetasService es = new EtiquetasService(etiquetas);
+//		MostrarListStackService ms= new MostrarListStackService();
+//		
+//		System.out.println("ID Pregunta: "+getId()+"\nTitulo: "+titulo);
+//		super.mostrarComun();
+//		System.out.println("Recompensa ofrecida: "+recompensa.getMontoRecompensa()+" puntos.");
+//		System.out.println("----Etiquetas---- ");
+//		es.mostrarEtiquetas();
+//		System.out.println("----Respuestas---- ");
+//		ms.mostrarRespuestas(respuestas);
+//	}
+//	
+//	
+//	/**
+//	 * Muestra una pregunta con todos sus elementos a excepción de sus respuestas, pues muestra solo las respuestas que no pertenecen 
+//	 * al autor de la pregunta.
+//	 * @param nameAutor Nombre 
+//	 */
+//	public void mostrarComun(String nameAutor) {
+//		
+//		EtiquetasService es = new EtiquetasService(etiquetas);
+//		MostrarListStackService ms= new MostrarListStackService();
+//		
+//		System.out.println("ID Pregunta: "+getId()+"\nTitulo: "+titulo);
+//		super.mostrarComun();
+//		System.out.println("Recompensa ofrecida: "+recompensa.getMontoRecompensa()+" puntos.");
+//		System.out.println("----Etiquetas---- ");
+//		es.mostrarEtiquetas();
+//		System.out.println("----Respuestas---- ");
+//		ms.mostrarRespuestas(respuestas,nameAutor);
+//	}
 
 	
 }
