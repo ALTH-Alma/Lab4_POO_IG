@@ -13,14 +13,20 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.JSplitPane;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.border.CompoundBorder;
 import javax.swing.BoxLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JComboBox;
+import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Inicio {
 
 	private JFrame frame;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -67,13 +73,6 @@ public class Inicio {
 		frame.getContentPane().add(lblTitulo);
 		
 		JButton btnIniSesion = new JButton("Iniciar sesión");
-		btnIniSesion.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				
-			}
-		});
 		btnIniSesion.setBounds(10, 113, 164, 48);
 		btnIniSesion.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnIniSesion.setForeground(UIManager.getColor("InternalFrame.activeTitleForeground"));
@@ -87,7 +86,25 @@ public class Inicio {
 		btnRegistro.setBackground(UIManager.getColor("InternalFrame.activeTitleBackground"));
 		frame.getContentPane().add(btnRegistro);
 		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null},
+			},
+			new String[] {
+				"New column", "New column", "New column", "New column"
+			}
+		));
+		table.setFillsViewportHeight(true);
+		table.setCellSelectionEnabled(true);
+		table.setColumnSelectionAllowed(true);
+		table.setBounds(285, 113, 520, 56);
+		frame.getContentPane().add(table);
+		
+		JList list_1 = new JList();
+		list_1.setBounds(524, 194, -124, -41);
+		frame.getContentPane().add(list_1);
+		
 		
 	}
-
 }
