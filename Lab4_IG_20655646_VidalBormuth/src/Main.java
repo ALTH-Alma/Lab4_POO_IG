@@ -1,5 +1,6 @@
 
-
+import controlador.*;
+import interfaz.*;
 import _TDAs.Usuario;
 
 
@@ -83,6 +84,9 @@ public class Main{
 	
 		
         Stack s1= new Stack(usuarios1, preguntas1, etiquetas1); //Se crea el stack con la lista de usuarios, preguntas y etiquetas.
+        
+        InicioControl.mostrar();
+        
 	} 
         
 }       

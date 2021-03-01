@@ -20,6 +20,7 @@ public class InicioFrame extends JFrame {
 
 	private JPanel contentPane;
 	private static AccederFrame acceder = new AccederFrame();
+	private static RegistroFrame registro = new RegistroFrame();
 	
 
 	/**
@@ -66,7 +67,7 @@ public class InicioFrame extends JFrame {
 		btnIniSesion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				acceder.setVisible(true);
+				controlador.InicioControl.eventoBtnIngresar();
 			}
 		});
 		
@@ -77,6 +78,12 @@ public class InicioFrame extends JFrame {
 		contentPane.add(btnIniSesion);
 		
 		JButton btnRegistro = new JButton("Registarse");
+		btnRegistro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.InicioControl.eventoBtnRegistrarse();
+			}
+		});
 		btnRegistro.setBounds(10, 172, 164, 48);
 		btnRegistro.setForeground(UIManager.getColor("InternalFrame.activeTitleForeground"));
 		btnRegistro.setFont(new Font("Tahoma", Font.BOLD, 13));
