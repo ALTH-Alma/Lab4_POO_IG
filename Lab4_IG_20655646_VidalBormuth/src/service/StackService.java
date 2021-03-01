@@ -15,7 +15,7 @@ import _TDAs.Usuario;
  *
  */
 public class StackService {
-	private final Stack stack;
+	private Stack stack;
 
 
 	/**
@@ -23,8 +23,8 @@ public class StackService {
 	 * @param stack Stack con el que se trabaja.
 	 * @param usuarioActivo Usuario Activo que realiza cambios en stack.
 	 */
-	public StackService(Stack stack) {
-		this.stack = stack;
+	public StackService() {
+		this.stack = new Stack();
 	}
 
 	/**
@@ -36,6 +36,9 @@ public class StackService {
 	}
 	
 	
+	public void setStack(Stack stack) {
+		this.stack = stack;
+	}
 	
 	
 	

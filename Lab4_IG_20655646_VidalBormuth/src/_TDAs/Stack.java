@@ -1,5 +1,6 @@
 package _TDAs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //import Service.MostrarListStackService;
@@ -28,6 +29,13 @@ public class Stack  {
 		this.etiquetas = etiquetas;
 
 	}
+	
+	public Stack() {
+		this.usuarios = new ArrayList<Usuario>();
+		this.preguntas = new ArrayList<Pregunta>();
+		this.etiquetas = new ArrayList<Etiqueta>();
+	}
+	
 
 	/**
 	 * Permite obtener la lista de usuarios del stack.
