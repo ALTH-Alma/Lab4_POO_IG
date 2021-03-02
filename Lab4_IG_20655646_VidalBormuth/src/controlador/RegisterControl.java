@@ -1,5 +1,7 @@
 package controlador;
 
+import javax.swing.JOptionPane;
+
 import interfaz.RegistroFrame;
 
 public class RegisterControl {
@@ -14,6 +16,9 @@ public class RegisterControl {
 	}
 	
 	public static void eventoBtnVolver() {
+		
+		registro.getTextFieldNewUserName().setText("");
+		registro.getTextFieldNewPass().setText("");
 		ocultar();
 		InicioControl.mostrar();
 	}
@@ -22,6 +27,20 @@ public class RegisterControl {
 		
 		String newUserName = registro.getTextFieldNewUserName().getText();
 		String newUserPass = registro.getTextFieldNewPass().getText();
+		
+		if(controlador.InicioControl.stackService.register(newUserName, newUserPass)){
+			registro.getTextFieldNewUserName().setText("");
+			registro.getTextFieldNewPass().setText("");
+			ocultar();
+			JOptionPane.showMessageDialog(null,"Usuario registrado con existo !!"+"\n Bienvenido a nuestra comunidad :)");
+			InicioControl.mostrar();
+		}else {
+			JOptionPane.showMessageDialog(null,"Nombre de usuario existente !!" + "\nNo se ha podido registrar, por favor intente de nuevo con otro nombre.");
+			registro.getTextFieldNewUserName().setText("");
+			registro.getTextFieldNewPass().setText("");
+		}
+		
+		
 	}
 
 }

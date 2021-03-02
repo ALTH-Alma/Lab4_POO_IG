@@ -1,6 +1,8 @@
 package controlador;
 
 
+import javax.swing.JOptionPane;
+
 import interfaz.AccederFrame;
 
 public class AccederControl {
@@ -14,6 +16,9 @@ public class AccederControl {
 	}
 	
 	public static void eventoBtnVolver() {
+		
+		inicioSesion.getTextNameUser().setText("");
+		inicioSesion.getPasswordUser().setText("");
 		ocultar();
 		InicioControl.mostrar();
 	}
@@ -22,9 +27,25 @@ public class AccederControl {
 		
 		String userName = inicioSesion.getTextNameUser().getText();
 		String userPass = inicioSesion.getPasswordUser().getText();
+		int aux = controlador.InicioControl.stackService.login(userName, userPass);
 		
-		inicioSesion.setTextNameUser(null);
-		inicioSesion.setPasswordUser(null);
+		inicioSesion.getTextNameUser().setText("");
+		inicioSesion.getPasswordUser().setText("");
+		
+		if( aux == 0){
+			ocultar();
+			JOptionPane.showMessageDialog(null, userName+" ha iniciado sesión !!");
+			InicioControl.mostrar();
+			
+		}else if( aux == 1) {
+			JOptionPane.showMessageDialog(null,"Contraseña incorrecta !!"+"\n Por favor intentelo nuevamente.");
+		}else if( aux == 2) {
+			JOptionPane.showMessageDialog(null,"Nombre de usuario incorrecto o usuario inexistente !!"+"\n Por favor intentelo nuevamente.");
+		}else if( aux == 3) {
+			JOptionPane.showMessageDialog(null,"Ya existe sesión activa !!"+"\n Si desea inciar una nueva sesión cierre sesión activa.");
+		}
+			
+
 	}
 
 }

@@ -1,9 +1,14 @@
 package controlador;
 import interfaz.*;
+import service.StackService;
 
 public class InicioControl {
 	
+	
+	public static StackService stackService = new StackService();
 	public static InicioFrame inicio = new InicioFrame();
+	
+	
 	public static void mostrar() {
 		inicio.setVisible(true);
 	}
@@ -20,5 +25,7 @@ public class InicioControl {
 		ocultar();
 		RegisterControl.mostrar();
 	}
+	
+
 
 }
