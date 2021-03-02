@@ -35,6 +35,10 @@ public class InicioFrame extends JFrame {
 	private JTable tablePreguntasStack;
 	
 
+	public JTable getTablePreguntasStack() {
+		return tablePreguntasStack;
+	}
+
 	/**
 	 * Launch the application.
 	 */
@@ -67,7 +71,7 @@ public class InicioFrame extends JFrame {
 		lblTitulo.setBounds(85, 32, 1178, 73);
 		lblTitulo.setToolTipText("");
 		lblTitulo.setForeground(Color.BLACK);
-		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 60));
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 50));
 		lblTitulo.setBackground(Color.BLACK);
 		contentPane.add(lblTitulo);
 		
@@ -123,23 +127,6 @@ public class InicioFrame extends JFrame {
 		tablePreguntasStack.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"Hola", null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
 			},
 			new String[] {
 				"Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"

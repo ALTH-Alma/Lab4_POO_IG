@@ -20,6 +20,7 @@ public class StackService {
 
 	/**
 	 * Crea un stackService en base a un satck y un usuario activo.
+	 * @param s1 
 	 * @param stack Stack con el que se trabaja.
 	 * @param usuarioActivo Usuario Activo que realiza cambios en stack.
 	 */
@@ -132,7 +133,9 @@ public class StackService {
 		}else if(!user.getPass().equals(userPass)) { //Si se encontro el usuario y la clave no coincide con la ingresada.
 			return 1; //Retorna 1.
 		}else { //Si pasa todas las prueba inicia sesión.
-		return 0; //Retorna un 1.
+			stack.setActiveUser(user);
+			return 0; //Retorna un 1.
+			
 		}
 		
 	}
@@ -142,12 +145,12 @@ public class StackService {
 	/**
 	 * Permite que un usuario activo desactive su sesión. 
 	 */
-	public boolean logout(String userName, String userPass) {
+	public boolean logout() {
 		
 		Usuario userA = stack.getActiveUser();
 		
 		if(userA != null) {//Si los datos corresponden al usuario...
-			userA = null; //Se cierra sesión y usario activo vacio.
+			stack.setActiveUser(null); //Se cierra sesión y usario activo vacio.
 			return true;
 		}else {
 			return false;
@@ -188,11 +191,7 @@ public class StackService {
         	System.out.println("\n#NO SE A PODIDO REALIZAR LA RESPUESTA. Id inexistente.\n"); //Sino no hace nada.
         }		
 	}
-	
-	
-	
-	
-	
+		
 	
 	
 	/**

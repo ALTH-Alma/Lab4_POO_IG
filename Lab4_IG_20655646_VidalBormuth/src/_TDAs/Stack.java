@@ -90,7 +90,7 @@ public class Stack  {
 		this.activeUser = activeUser;
 	}
 	
-	
+
 	/**
 	 * Muestra un stack y sus atributos. 
 	 */

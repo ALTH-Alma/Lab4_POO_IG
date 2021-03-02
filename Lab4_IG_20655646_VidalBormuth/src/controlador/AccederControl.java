@@ -27,6 +27,7 @@ public class AccederControl {
 		
 		String userName = inicioSesion.getTextNameUser().getText();
 		String userPass = inicioSesion.getPasswordUser().getText();
+		
 		int aux = controlador.InicioControl.stackService.login(userName, userPass);
 		
 		inicioSesion.getTextNameUser().setText("");
@@ -35,17 +36,22 @@ public class AccederControl {
 		if( aux == 0){
 			ocultar();
 			JOptionPane.showMessageDialog(null, userName+" ha iniciado sesión !!");
-			InicioControl.mostrar();
+			SesionIniciadaControl.mostrar(userName);
 			
-		}else if( aux == 1) {
+		}else if(aux == 1) {
 			JOptionPane.showMessageDialog(null,"Contraseña incorrecta !!"+"\n Por favor intentelo nuevamente.");
-		}else if( aux == 2) {
+		}else if(aux == 2) {
 			JOptionPane.showMessageDialog(null,"Nombre de usuario incorrecto o usuario inexistente !!"+"\n Por favor intentelo nuevamente.");
-		}else if( aux == 3) {
+		}else if (aux == 3) {
+			ocultar();
 			JOptionPane.showMessageDialog(null,"Ya existe sesión activa !!"+"\n Si desea inciar una nueva sesión cierre sesión activa.");
+			SesionIniciadaControl.mostrar(userName);
+		}else {
+			JOptionPane.showMessageDialog(null,"ERROR");
 		}
-			
-
+		
 	}
 
+	
+	
 }
