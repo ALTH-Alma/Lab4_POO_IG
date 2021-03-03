@@ -76,6 +76,12 @@ public class CrearEtiquetaFrame extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btnCrearEtiqueta = new JButton("Crear etiqueta");
+		btnCrearEtiqueta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.CrearEtiquetaControl.eventoBtnCrearEtiqueta();
+			}
+		});
 		btnCrearEtiqueta.setBounds(119, 239, 131, 23);
 		contentPane.add(btnCrearEtiqueta);
 		

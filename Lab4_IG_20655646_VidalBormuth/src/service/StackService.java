@@ -49,7 +49,7 @@ public class StackService {
 	 * @param idPregunta Identificador de la pregunta buscada.
 	 * @return Pregunta del id si es que se encuentra. 
 	 */
-	private Pregunta getPregunta(int idPregunta) {
+	public Pregunta getPregunta(int idPregunta) {
 		
         for(Pregunta pregunta: stack.getPreguntas()){
 			if(pregunta.getId() == idPregunta) {
@@ -85,6 +85,16 @@ public class StackService {
 		for(Usuario user: stack.getUsuarios()) {//Recorre toda la lista de usuarios hasta encontrarlo.
 			if(user.getName().equals(userName)) {
 				return user; //Si lo encuentra retorna al usuario. 
+			}
+		}
+		return null; //Si no lo encuentra retorna null.
+	}
+	
+	public Etiqueta getEtiqueta(String etiquetaName) {
+		
+		for(Etiqueta etiqueta: stack.getEtiquetas()) {//Recorre toda la lista de usuarios hasta encontrarlo.
+			if(etiqueta.getName().equals(etiquetaName)) {
+				return etiqueta; //Si lo encuentra retorna al usuario. 
 			}
 		}
 		return null; //Si no lo encuentra retorna null.

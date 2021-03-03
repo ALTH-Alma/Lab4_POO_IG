@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import _TDAs.Etiqueta;
@@ -27,27 +28,10 @@ public class GenerarPreguntaControl {
 		ocultar();
 		generadorAsk.getTextFieldTPregunta().setText("");
 		generadorAsk.getTextAreaContenidoR().setText("");
+		etiquetasNewAsk.clear();
+		SesionIniciadaControl.mostrar("");
 
 	}
-	
-	public static void eventoBtnAgregarEtiqueta() {
-		
-		
-	}
-	
-	public static void eventoBtnCrearEtiqueta() {
-		CrearEtiquetaControl.mostrar();
-	}
-	
-	public static void eventoBtnEnviarPregunta() {
-		
-		String titulo = generadorAsk.getTextFieldTPregunta().getText();
-		String contenido = generadorAsk.getTextAreaContenidoR().getText();
-		
-		controlador.InicioControl.stackService.ask(titulo, contenido, etiquetasNewAsk);
-		
-	}
-	
 	
 	public static void mostrarListaEtiquetas() {
 		
@@ -56,10 +40,38 @@ public class GenerarPreguntaControl {
 		
 		for( int i = 0; i < etiquetas.size(); i++) {
 			lista[i] = etiquetas.get(i).getName();
-
 		}
-		generadorAsk.getComboBoxEtiquetas().setModel(new DefaultComboBoxModel(lista));
-				
-			
+		generadorAsk.getComboBoxEtiquetas().setModel(new DefaultComboBoxModel(lista));	
 	}
+	
+	
+	public static void eventoBtnAgregarEtiqueta() {
+		
+		String nombreEtiqueta = (String) generadorAsk.getComboBoxEtiquetas().getSelectedItem();
+		etiquetasNewAsk.add(InicioControl.stackService.getEtiqueta(nombreEtiqueta));
+		JOptionPane.showMessageDialog(null,"Se ha gregado la etiqueta "+nombreEtiqueta+ " a la lista de etiquetas de su pregunta.");
+	}
+	
+	public static void eventoBtnCrearEtiqueta() {
+		ocultar();
+		CrearEtiquetaControl.mostrar();
+
+	}
+	
+	
+	public static void eventoBtnEnviarPregunta() {
+		
+		String titulo = generadorAsk.getTextFieldTPregunta().getText();
+		String contenido = generadorAsk.getTextAreaContenidoR().getText();
+		
+		controlador.InicioControl.stackService.ask(titulo, contenido, etiquetasNewAsk);
+		ocultar();
+		generadorAsk.getTextFieldTPregunta().setText("");
+		generadorAsk.getTextAreaContenidoR().setText("");
+		SesionIniciadaControl.mostrar("");
+		
+	}
+	
+	
+
 }

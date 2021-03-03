@@ -23,13 +23,13 @@ public class CrearEtiquetaControl {
 		etiqueta.getTextFieldNEtiqueta().setText("");
 		etiqueta.getTextAreaDEtiqueta().setText("");
 		ocultar();
+		GenerarPreguntaControl.mostrar();
 	}
 	
 	public static void eventoBtnCrearEtiqueta() {
 		
 		String nombre = etiqueta.getTextFieldNEtiqueta().getText();
 		String descripcion = etiqueta.getTextAreaDEtiqueta().getText();
-		
 		Etiqueta newEtiqueta= new Etiqueta(nombre, descripcion);
 		InicioControl.stackService.getStack().getEtiquetas().add(newEtiqueta);
 		
@@ -37,5 +37,7 @@ public class CrearEtiquetaControl {
 		etiqueta.getTextAreaDEtiqueta().setText("");
 		
 		ocultar();
+		GenerarPreguntaControl.mostrar();
+		
 	}
 }

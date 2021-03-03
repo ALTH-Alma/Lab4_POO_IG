@@ -28,21 +28,22 @@ public class SesionIniciadaControl {
 		
 		List<Pregunta> preguntas = InicioControl.stackService.getStack().getPreguntas();
 		
-		String matriz[][] = new String[preguntas.size()][4];
+		String matriz[][] = new String[preguntas.size()][5];
 		
 		for( int i = 0; i < preguntas.size(); i++) {
-			matriz[i][0] = preguntas.get(i).getTitulo();
-			matriz[i][1] = preguntas.get(i).getAutor();
-			matriz[i][2] = Integer.toString(preguntas.get(i).getRespuestas().size());
-			matriz[i][3] = preguntas.get(i).getFechaDePublicacion();
+			matriz[i][0] = Integer.toString(preguntas.get(i).getId());
+			matriz[i][1] = preguntas.get(i).getTitulo();
+			matriz[i][2] = preguntas.get(i).getAutor();
+			matriz[i][3] = Integer.toString(preguntas.get(i).getRespuestas().size());
+			matriz[i][4] = preguntas.get(i).getFechaDePublicacion();
 		}
 		
 		sesionIniciada.getTablePreguntasStack().setModel(new DefaultTableModel(
 			matriz,
-			new String[] { "Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"}
+			new String[] { "ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"}
 			)  {
 			boolean[] columnEditables = new boolean[] {
-					false, false, false, false
+					false, false, false, false, false
 				};
 				public boolean isCellEditable(int row, int column) {
 					return columnEditables[column];
@@ -67,7 +68,7 @@ public class SesionIniciadaControl {
 	}
 	
 	public static void eventoBtnHacerPregunta() {
-
+		ocultar();
 		GenerarPreguntaControl.mostrar();
 		
 	}

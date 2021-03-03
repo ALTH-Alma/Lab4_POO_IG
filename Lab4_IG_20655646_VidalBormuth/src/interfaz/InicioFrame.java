@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -12,6 +13,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
@@ -114,34 +116,40 @@ public class InicioFrame extends JFrame {
 		tablePreguntasStack = new JTable();
 		tablePreguntasStack.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				//Pendiente
+			public void mousePressed(MouseEvent e) {
+
+		        Point point = e.getPoint(); 
+		        int row = tablePreguntasStack.rowAtPoint(point); 
+		        int idPregunta = Integer.parseInt(String.valueOf(tablePreguntasStack.getValueAt(row,0))); 
+		    	controlador.InicioControl.eventoClickPreguntaTable(idPregunta);
+
 			}
 		});
 		tablePreguntasStack.setFillsViewportHeight(true);
 		scrollPane_1.setViewportView(tablePreguntasStack);
 		tablePreguntasStack.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tablePreguntasStack.setBorder(new LineBorder(new Color(0, 0, 0), 0, true));
-		tablePreguntasStack.setToolTipText("jkzhkckjz");
+		tablePreguntasStack.setToolTipText("");
 		tablePreguntasStack.setSurrendersFocusOnKeystroke(true);
 		tablePreguntasStack.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"Hola", null, null, null},
+				{null, "Hola", null, null, null},
 			},
 			new String[] {
-				"Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"
+				"ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				false, false, false, false
+				false, false, false, false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		});
-		tablePreguntasStack.getColumnModel().getColumn(0).setPreferredWidth(296);
-		tablePreguntasStack.getColumnModel().getColumn(1).setPreferredWidth(115);
-		tablePreguntasStack.getColumnModel().getColumn(2).setPreferredWidth(72);
-		tablePreguntasStack.getColumnModel().getColumn(3).setPreferredWidth(115);
+		tablePreguntasStack.getColumnModel().getColumn(0).setPreferredWidth(50);
+		tablePreguntasStack.getColumnModel().getColumn(1).setPreferredWidth(296);
+		tablePreguntasStack.getColumnModel().getColumn(2).setPreferredWidth(115);
+		tablePreguntasStack.getColumnModel().getColumn(3).setPreferredWidth(72);
+		tablePreguntasStack.getColumnModel().getColumn(4).setPreferredWidth(115);
 	}
 }

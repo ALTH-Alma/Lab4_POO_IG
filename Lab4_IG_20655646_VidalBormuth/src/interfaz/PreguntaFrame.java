@@ -13,6 +13,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
 
 public class PreguntaFrame extends JFrame {
 
@@ -78,7 +81,8 @@ public class PreguntaFrame extends JFrame {
 		contentPane.add(lblPregunta);
 		
 		lblDescripcion = new JLabel("Descripcion....");
-		lblDescripcion.setBounds(39, 118, 142, 31);
+		lblDescripcion.setVerticalAlignment(SwingConstants.TOP);
+		lblDescripcion.setBounds(39, 125, 674, 53);
 		contentPane.add(lblDescripcion);
 		
 		lblFecha = new JLabel("Fecha");
@@ -114,11 +118,17 @@ public class PreguntaFrame extends JFrame {
 		textFieldRespuesta.setColumns(20);
 		
 		JButton btnVolver2 = new JButton("Volver");
+		btnVolver2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.PreguntaControl.eventoBtnVolverPregunta();
+			}
+		});
 		btnVolver2.setBounds(600, 38, 113, 31);
 		contentPane.add(btnVolver2);
 		
 		JButton btnEnviarRespuesta = new JButton("Enviar respuesta");
-		btnEnviarRespuesta.setBounds(39, 437, 113, 36);
+		btnEnviarRespuesta.setBounds(39, 437, 185, 36);
 		contentPane.add(btnEnviarRespuesta);
 	}
 }
