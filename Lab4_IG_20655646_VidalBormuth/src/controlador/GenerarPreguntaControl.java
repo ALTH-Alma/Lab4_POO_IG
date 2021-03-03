@@ -14,7 +14,7 @@ import interfaz.GenerarPreguntaFrame;
 
 public class GenerarPreguntaControl {
 	public static GenerarPreguntaFrame generadorAsk = new GenerarPreguntaFrame();
-	private static List<Etiqueta> etiquetasNewAsk = new ArrayList<>();
+	static List<Etiqueta> etiquetasNewAsk = new ArrayList<>();
 	
 	public static void mostrar() {
 		generadorAsk.setVisible(true);
@@ -44,6 +44,10 @@ public class GenerarPreguntaControl {
 		generadorAsk.getComboBoxEtiquetas().setModel(new DefaultComboBoxModel(lista));	
 	}
 	
+	public static void eventoBtnCrearEtiqueta() {
+		ocultar();
+		CrearEtiquetaControl.mostrar();
+	}
 	
 	public static void eventoBtnAgregarEtiqueta() {
 		
@@ -52,20 +56,25 @@ public class GenerarPreguntaControl {
 		JOptionPane.showMessageDialog(null,"Se ha gregado la etiqueta "+nombreEtiqueta+ " a la lista de etiquetas de su pregunta.");
 	}
 	
-	public static void eventoBtnCrearEtiqueta() {
-		ocultar();
-		CrearEtiquetaControl.mostrar();
-
+	private static List<Etiqueta> crearListEtiquetas(List<Etiqueta> listaEtiquetas){
+		
+		List<Etiqueta> etiquetasNew = new ArrayList<>();
+		for( int i = 0; i < listaEtiquetas.size(); i++) {
+			etiquetasNew.add(listaEtiquetas.get(i));
+		}
+		return etiquetasNew;
 	}
 	
-	
+
 	public static void eventoBtnEnviarPregunta() {
 		
 		String titulo = generadorAsk.getTextFieldTPregunta().getText();
 		String contenido = generadorAsk.getTextAreaContenidoR().getText();
 		
-		controlador.InicioControl.stackService.ask(titulo, contenido, etiquetasNewAsk);
+		controlador.InicioControl.stackService.ask(titulo, contenido, crearListEtiquetas(etiquetasNewAsk));
+		
 		ocultar();
+		etiquetasNewAsk.clear();
 		generadorAsk.getTextFieldTPregunta().setText("");
 		generadorAsk.getTextAreaContenidoR().setText("");
 		SesionIniciadaControl.mostrar("");

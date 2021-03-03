@@ -23,7 +23,7 @@ public class Pregunta extends ComunRP{
 	private static int count2 = 0; //Incrementador del id de la clase Pregunta.
 	private String titulo; //Un titulo.
 	private Recompensa recompensa; //Una recompensa.
-	private List<Etiqueta> etiquetas; //Una lista de etiquetas.
+	private List<Etiqueta> etiquetas = new ArrayList<Etiqueta>(); //Una lista de etiquetas.
 	private List<Respuesta> respuestas; //Una lista de respuestas.
 
 	

@@ -1,6 +1,6 @@
 package interfaz;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,25 +11,46 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
+import javax.swing.JComboBox;
 
 public class PreguntaFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField textFieldRespuesta;
 	private JLabel lblPregunta;
 	private JLabel lblDescripcion;
 	private JLabel lblFecha;
 	private JLabel lblAutor;
+	private JTextArea textAreaRespuesta;
+	private JLabel lblEstado;
+	private JLabel lblVotosFavor;
+	private JLabel lblVotosContra;
+	private JComboBox comboBoxEtiquetasPregunta;
 
 	
-	public JTextField getTextFieldRespuesta() {
-		return textFieldRespuesta;
+	public JComboBox getComboBoxEtiquetasPregunta() {
+		return comboBoxEtiquetasPregunta;
+	}
+
+	public JTextArea getTextAreaRespuesta() {
+		return textAreaRespuesta;
+	}
+
+	public JLabel getLblEstado() {
+		return lblEstado;
+	}
+
+	public JLabel getLblVotosFavor() {
+		return lblVotosFavor;
+	}
+
+	public JLabel getLblVotosContra() {
+		return lblVotosContra;
 	}
 
 	public JLabel getLblPregunta() {
@@ -69,7 +90,7 @@ public class PreguntaFrame extends JFrame {
 	 */
 	public PreguntaFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 816, 565);
+		setBounds(100, 100, 790, 623);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -94,7 +115,7 @@ public class PreguntaFrame extends JFrame {
 		contentPane.add(lblAutor);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(39, 200, 674, 131);
+		scrollPane.setBounds(39, 229, 674, 101);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -112,11 +133,6 @@ public class PreguntaFrame extends JFrame {
 		lblNewLabel_4.setBounds(39, 351, 130, 23);
 		contentPane.add(lblNewLabel_4);
 		
-		textFieldRespuesta = new JTextField();
-		textFieldRespuesta.setBounds(39, 373, 674, 53);
-		contentPane.add(textFieldRespuesta);
-		textFieldRespuesta.setColumns(20);
-		
 		JButton btnVolver2 = new JButton("Volver");
 		btnVolver2.addMouseListener(new MouseAdapter() {
 			@Override
@@ -124,11 +140,53 @@ public class PreguntaFrame extends JFrame {
 				controlador.PreguntaControl.eventoBtnVolverPregunta();
 			}
 		});
-		btnVolver2.setBounds(600, 38, 113, 31);
+		btnVolver2.setBounds(583, 509, 130, 33);
 		contentPane.add(btnVolver2);
 		
 		JButton btnEnviarRespuesta = new JButton("Enviar respuesta");
-		btnEnviarRespuesta.setBounds(39, 437, 185, 36);
+		btnEnviarRespuesta.setBounds(39, 507, 185, 36);
 		contentPane.add(btnEnviarRespuesta);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(39, 379, 674, 62);
+		contentPane.add(scrollPane_1);
+		
+		textAreaRespuesta = new JTextArea();
+		scrollPane_1.setViewportView(textAreaRespuesta);
+		
+		JLabel lblNewLabel = new JLabel("Votos a Favor:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel.setBounds(38, 199, 118, 19);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Votos en contra:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_1.setBounds(166, 199, 118, 19);
+		contentPane.add(lblNewLabel_1);
+		
+		lblEstado = new JLabel("Estado");
+		lblEstado.setBounds(39, 11, 172, 19);
+		contentPane.add(lblEstado);
+		
+		lblVotosFavor = new JLabel("NVF");
+		lblVotosFavor.setBounds(123, 201, 46, 14);
+		contentPane.add(lblVotosFavor);
+		
+		lblVotosContra = new JLabel("NVC");
+		lblVotosContra.setBounds(262, 201, 46, 14);
+		contentPane.add(lblVotosContra);
+		
+		JButton btnNewButton = new JButton("Recompensa");
+		btnNewButton.setBounds(577, 197, 136, 23);
+		contentPane.add(btnNewButton);
+		
+		comboBoxEtiquetasPregunta = new JComboBox();
+		comboBoxEtiquetasPregunta.setBounds(392, 196, 148, 22);
+		contentPane.add(comboBoxEtiquetasPregunta);
+		
+		JLabel lblNewLabel_6 = new JLabel("Etiquetas:");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_6.setBounds(318, 201, 98, 14);
+		contentPane.add(lblNewLabel_6);
 	}
 }
