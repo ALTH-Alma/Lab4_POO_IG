@@ -31,6 +31,10 @@ public class SesionIniciadaFrame extends JFrame {
 	public JLabel getLblTitulo() {
 		return lblTitulo;
 	}
+	
+	public JTable getTablePreguntasStack() {
+		return tablePreguntasStack;
+	}
 
 	/**
 	 * Launch the application.
@@ -154,5 +158,7 @@ public class SesionIniciadaFrame extends JFrame {
 		tablePreguntasStack.getColumnModel().getColumn(2).setPreferredWidth(72);
 		tablePreguntasStack.getColumnModel().getColumn(3).setPreferredWidth(115);
 	}
+
+
 
 }
