@@ -168,7 +168,6 @@ public class StackService {
 	public void ask(String newTitulo, String newContenido, List<Etiqueta> newEtiquetas) {
 		
 		stack.getPreguntas().add(new Pregunta(stack.getActiveUser().getName(), newTitulo, newContenido, newEtiquetas));
-		System.out.println("\nSe a agregado una nueva pregunta.\n");
 
 	}
 	

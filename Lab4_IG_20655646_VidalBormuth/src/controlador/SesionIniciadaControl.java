@@ -67,7 +67,7 @@ public class SesionIniciadaControl {
 	}
 	
 	public static void eventoBtnHacerPregunta() {
-		ocultar();
+
 		GenerarPreguntaControl.mostrar();
 		
 	}

@@ -25,12 +25,13 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
 
 public class GenerarPreguntaFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldTPregunta;
-	private JComboBox comboBoxEtiquetas;
+	private JComboBox<Objects> comboBoxEtiquetas;
 	private JTextArea textAreaContenidoR;
 
 	public JPanel getContentPane() {
@@ -91,6 +92,17 @@ public class GenerarPreguntaFrame extends JFrame {
 		contentPane.add(textFieldTPregunta);
 		textFieldTPregunta.setColumns(20);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(175, 136, 477, 166);
+		contentPane.add(scrollPane); 
+		
+		textAreaContenidoR = new JTextArea();
+		scrollPane.setViewportView(textAreaContenidoR);
+		textAreaContenidoR.setBackground(Color.WHITE);
+		textAreaContenidoR.setWrapStyleWord(true);
+		textAreaContenidoR.setLineWrap(true);
+		textAreaContenidoR.setColumns(30);
+		
 		JLabel lblNewLabel_2 = new JLabel("Contenido pregunta:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_2.setBounds(30, 136, 147, 25);
@@ -107,12 +119,25 @@ public class GenerarPreguntaFrame extends JFrame {
 		contentPane.add(comboBoxEtiquetas);
 		
 		JButton btnAddEtiqueta = new JButton("Agregar etiqueta");
+		btnAddEtiqueta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.GenerarPreguntaControl.eventoBtnAgregarEtiqueta();
+			}
+		});
 		btnAddEtiqueta.setBounds(219, 379, 203, 25);
 		contentPane.add(btnAddEtiqueta);
 		
 		JButton btnCrearEtiqueta = new JButton("Crear nueva etiqueta");
+		btnCrearEtiqueta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.GenerarPreguntaControl.eventoBtnCrearEtiqueta();
+			}
+		});
 		btnCrearEtiqueta.setBounds(432, 379, 220, 25);
 		contentPane.add(btnCrearEtiqueta);
+		
 		
 		JButton btnEnviarPregunta = new JButton("Enviar pregunta");
 		btnEnviarPregunta.addMouseListener(new MouseAdapter() {
@@ -124,6 +149,7 @@ public class GenerarPreguntaFrame extends JFrame {
 		btnEnviarPregunta.setBounds(30, 467, 191, 50);
 		contentPane.add(btnEnviarPregunta);
 		
+		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -134,15 +160,8 @@ public class GenerarPreguntaFrame extends JFrame {
 		btnCancelar.setBounds(461, 467, 191, 50);
 		contentPane.add(btnCancelar);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(175, 136, 477, 166);
-		contentPane.add(scrollPane);
+
 		
-		textAreaContenidoR = new JTextArea();
-		scrollPane.setViewportView(textAreaContenidoR);
-		textAreaContenidoR.setBackground(Color.WHITE);
-		textAreaContenidoR.setWrapStyleWord(true);
-		textAreaContenidoR.setLineWrap(true);
-		textAreaContenidoR.setColumns(30);
+
 	}
 }
