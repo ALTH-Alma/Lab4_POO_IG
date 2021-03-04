@@ -8,17 +8,31 @@ import javax.swing.table.DefaultTableModel;
 import _TDAs.Pregunta;
 import interfaz.SesionIniciadaFrame;
 
+/**
+ * Clase que representa el controlador para la vista de la ventana que permite dar el inicio de una sesión iniciada de StackOverflow.
+ * @author Alma
+ *
+ */
 public class SesionIniciadaControl {
 	
-	private static String activeUserName;
-	public static SesionIniciadaFrame sesionIniciada = new SesionIniciadaFrame();
+	private static String activeUserName; //Posee un string para el nombre del usuario activo.
+	public static SesionIniciadaFrame sesionIniciada = new SesionIniciadaFrame(); //Posee una ventana de sesionIniciada.
 	
+	
+	/**
+	 * Muestra la ventana, con modificaciones en sus labl's segun el usuario activo.
+	 * @param actUserName nombre de usuario activo.
+	 */
 	public static void mostrar(String actUserName) {
-		mostrarTablaPreguntas();
+		mostrarTablaPreguntas(); //Muestra la tabla de preguntas del stack.
 		activeUserName = actUserName;
 		sesionIniciada.getLblTitulo().setText("Bienvenido "+actUserName);
 		sesionIniciada.setVisible(true);
 	}
+	
+	/**
+	 * Oculta la ventana.
+	 */
 	public static void ocultar() {
 		sesionIniciada.setVisible(false);
 	}
@@ -54,25 +68,32 @@ public class SesionIniciadaControl {
 			});//Se modifica la tabla de la ventana añadiendo la matriz con las preguntas.
 	}
 	
-	
+	/**
+	 * Define el evento producido al presionar Btn cerrarSesion.
+	 * Permite cerrar la sesion activa el stack con el metodo logout.
+	 */
 	public static void eventoBtnCerrarSesion() {
 		
-		if(controlador.InicioControl.stackService.logout()) {
-			ocultar();
+		if(controlador.InicioControl.stackService.logout()) { //Si se logra cerrar sesion..
+			ocultar(); //Se oculta la ventana
 			JOptionPane.showMessageDialog(null, activeUserName + " ha cerrado sesión !!");
-			InicioControl.mostrar();
+			InicioControl.mostrar(); //y se muestra la ventada de inicio stack.
 			
-		}else {
+		}else { //Si no
 			ocultar();
 			JOptionPane.showMessageDialog(null,"No existe sesión iniciada !!");
-			InicioControl.mostrar();
+			InicioControl.mostrar(); //Se muestra el inicio.
 		}
 		
 	}
 	
+	/**
+	 * Define el evento producido al presionar Btn hacer pregunta.
+	 * Permite entrar a la ventana para crear pregunta.
+	 */
 	public static void eventoBtnHacerPregunta() {
-		ocultar();
-		GenerarPreguntaControl.mostrar();
+		ocultar(); //Se oculta ventana
+		GenerarPreguntaControl.mostrar(); // y se muestra la ventana para generar una nueva pregunta.
 		
 	}
 	

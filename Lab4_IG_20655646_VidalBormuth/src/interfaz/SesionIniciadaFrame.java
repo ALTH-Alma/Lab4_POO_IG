@@ -24,7 +24,7 @@ import java.awt.SystemColor;
 
 
 /**
- * Clase que representa la vista de la ventana que permite dar el inicio de una sesión iniciada de StackOverflow.. 
+ * Clase que representa la vista de la ventana que permite dar el inicio de una sesión iniciada de StackOverflow.
  * @author Alma
  *
  */
