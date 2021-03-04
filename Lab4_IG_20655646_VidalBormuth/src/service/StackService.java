@@ -208,6 +208,7 @@ public class StackService {
 	}
 		
 	
+	//__________________________________________________________________
 	
 	/**
 	 * Permite agregar una recompensa por una pregunta. Actualiza reputación del ofertor. 
@@ -231,13 +232,10 @@ public class StackService {
 	public int reward(Pregunta pregunta, int montoRecompensa) {
 		
 		Usuario userA = stack.getActiveUser();
-		
 		if(pregunta == null || userA == null) { //Si no hay usuario activo o no existe la pregunta...
 			return -2; //Retorna -2.
-		}
-		else {
+		}else {
 			int reputacionUA = userA.getReputacion();
-			
 			if(reputacionUA < montoRecompensa) {//Si la recompensa es mayor que la reputacion de UA...
 				return reputacionUA; //Retorna -3.
 			}else { //Sino..
@@ -247,27 +245,25 @@ public class StackService {
 		}
 	}
 
+	//_______________________________________________________________________
 	
 	
-	
-	
-	
-	
+
 
 	
 	/**Permite aceptar una respuesta y modificar recompensas segun lo establecido por stack overflow.
 	 * @param respuesta Respuesta  que se quiere aceptar.
 	 * @param recompensa Recompensa por la pregunta a la que corresponde la respuesta. 
 	 */
-	private void aceptarRespuesta(Respuesta respuesta, Recompensa recompensa) {
-		RewardService rs = new RewardService(recompensa);
+	private int aceptarRespuesta(Respuesta respuesta, Recompensa recompensa) {
+		RewardService rewardService = new RewardService(recompensa);
 		if(respuesta != null && respuesta.getEstado().equals("Pendiente.")) {//Si la respuesta existe y su estado es pendiente.
 			respuesta.setEstado("Aceptada."); //Se acepta la respuesta.
-			//getUser(respuesta.getAutor()).agregarPuntosAReputacion((15+rs.entregarRecompensa())); //Se actualiza reputacion de autor de la respuesta.
+			getUser(respuesta.getAutor()).agregarPuntosAReputacion((15+rewardService.entregarRecompensa())); //Se actualiza reputacion de autor de la respuesta.
 			stack.getActiveUser().agregarPuntosAReputacion(2);//Se actualiza reputación del usuario Activo.
-			System.out.println("\nSe ha aceptado la respuesta "+respuesta.getId()+".");
+			return 0; // Retorna 0: Se acepto respuesta.
 		}else {
-			System.out.println("\n#NO ES POSIBLE ACEPTAR");
+			return 1; // Retorna 1: No se acepto, pues la respuesta ya esta aceptada.
 		}
 	}
 	
@@ -276,15 +272,15 @@ public class StackService {
 	 * @param idPregunta Identificador de la pregunta a la que corresponde la respuestas. 
 	 * @param idRespuesta Identificador de la respuesta a aceptar. 
 	 */
-	public void accept(int idPregunta, int idRespuesta) {
+	public int accept(Pregunta pregunta, Respuesta respuesta) {
 
-		Pregunta pregunta = getPregunta(idPregunta);//Si la pregunta existe, esta abierta y pertenece al usuario. 
+		//Si la pregunta existe, esta abierta y pertenece al usuario. 
 		if(pregunta != null && pregunta.getEstado().equals("Abierta.") && pregunta.getAutor().equals(stack.getActiveUser().getName())) { 
 			Recompensa recompensa = pregunta.getRecompensa();
-			Respuesta respuesta = getRespuesta(pregunta, idRespuesta);
-			aceptarRespuesta(respuesta, recompensa); //Se acepta la respuesta tomando como parametros la respuesta y la recompensa de la pregunta.
+			int aux = aceptarRespuesta(respuesta, recompensa); //Se acepta la respuesta tomando como parametros la respuesta y la recompensa de la pregunta.
+			return aux;
 		}else {
-			System.out.println("\n#PREGUNTA INEXISTENTE"); //Sino no se hace nada.
+			return 2; // Retorna 2: No se acepto, pues la pregunta esta cerrada.
 		}
 
 	}

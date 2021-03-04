@@ -88,6 +88,12 @@ public class RespuestaFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		btnAceptar = new JButton("Aceptar Respuesta");
+		btnAceptar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.RespuestaControl.eventoBtnAceptar();
+			}
+		});
 		btnAceptar.setBackground(SystemColor.desktop);
 		btnAceptar.setForeground(Color.BLACK);
 		btnAceptar.setBounds(557, 215, 183, 35);

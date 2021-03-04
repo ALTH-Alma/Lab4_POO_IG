@@ -90,7 +90,7 @@ public class PreguntaControl {
 	
 	public static void eventoClickRespuestaTable(int idRespuesta) {
 		Respuesta respuesta = pregunta.getRespuesta(idRespuesta);
-		RespuestaControl.mostrar(respuesta, perfil);
+		RespuestaControl.mostrar(pregunta, respuesta, perfil);
 	}
 	
 	public static void eventoBtnEnviarRespuesta() {

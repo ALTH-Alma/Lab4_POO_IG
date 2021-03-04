@@ -133,7 +133,7 @@ public class InicioFrame extends JFrame {
 		tablePreguntasStack.setSurrendersFocusOnKeystroke(true);
 		tablePreguntasStack.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, "null", null, null, null},
+				{null, null, null, null, null},
 			},
 			new String[] {
 				"ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"
