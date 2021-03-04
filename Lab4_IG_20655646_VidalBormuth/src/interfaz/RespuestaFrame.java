@@ -15,6 +15,8 @@ import java.awt.SystemColor;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JScrollPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class RespuestaFrame extends JFrame {
 
@@ -25,6 +27,7 @@ public class RespuestaFrame extends JFrame {
 	private JLabel lblFecha;
 	private JLabel lblAutor;
 	private JLabel lblRespuesta;
+	private JScrollPane scrollPane;
 
 
 
@@ -75,6 +78,7 @@ public class RespuestaFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 786, 372);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.window);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -82,10 +86,16 @@ public class RespuestaFrame extends JFrame {
 		JButton btnNewButton = new JButton("Aceptar Respuesta");
 		btnNewButton.setBackground(SystemColor.desktop);
 		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBounds(39, 267, 183, 35);
+		btnNewButton.setBounds(557, 215, 183, 35);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Volver");
+		JButton btnNewButton_1 = new JButton("Cerrar");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.RespuestaControl.eventoBtnVolverR();
+			}
+		});
 		btnNewButton_1.setBounds(581, 267, 159, 35);
 		contentPane.add(btnNewButton_1);
 		
@@ -97,7 +107,7 @@ public class RespuestaFrame extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Votos en contra:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1.setBounds(184, 215, 118, 19);
+		lblNewLabel_1.setBounds(39, 231, 118, 19);
 		contentPane.add(lblNewLabel_1);
 		
 		lblEstado = new JLabel("Estado");
@@ -109,7 +119,7 @@ public class RespuestaFrame extends JFrame {
 		contentPane.add(lblVotosFavor);
 		
 		lblVotosContra = new JLabel("NVC");
-		lblVotosContra.setBounds(286, 217, 46, 14);
+		lblVotosContra.setBounds(138, 223, 97, 35);
 		contentPane.add(lblVotosContra);
 		
 		lblFecha = new JLabel("Fecha");
@@ -120,10 +130,13 @@ public class RespuestaFrame extends JFrame {
 		lblAutor.setBounds(39, 179, 263, 23);
 		contentPane.add(lblAutor);
 		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(39, 41, 701, 98);
+		contentPane.add(scrollPane);
+		
 		lblRespuesta = new JLabel("New label");
+		scrollPane.setViewportView(lblRespuesta);
 		lblRespuesta.setBackground(SystemColor.activeCaption);
 		lblRespuesta.setVerticalAlignment(SwingConstants.TOP);
-		lblRespuesta.setBounds(39, 41, 701, 98);
-		contentPane.add(lblRespuesta);
 	}
 }

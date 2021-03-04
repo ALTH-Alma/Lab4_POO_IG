@@ -132,6 +132,27 @@ public class Pregunta extends ComunRP{
 		this.respuestas = respuestas;
 	}
 	
+	public Respuesta getRespuesta(int idRespuesta) {
+		
+        for(Respuesta respuesta: respuestas){
+			if(respuesta.getId() == idRespuesta) {
+				return respuesta;
+			}
+        }
+        return null;
+		
+	}
+	
+	public Etiqueta getEtiqueta(String etiquetaName) {
+		
+		for(Etiqueta etiqueta: etiquetas) {//Recorre toda la lista de usuarios hasta encontrarlo.
+			if(etiqueta.getName().equals(etiquetaName)) {
+				return etiqueta; //Si lo encuentra retorna al usuario. 
+			}
+		}
+		return null; //Si no lo encuentra retorna null.
+	}
+	
 
 	/**
 	 * Muestra una pregunta con todos sus elementos.

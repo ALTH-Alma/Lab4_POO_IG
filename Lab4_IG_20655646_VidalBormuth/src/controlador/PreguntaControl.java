@@ -3,6 +3,7 @@ package controlador;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import _TDAs.Etiqueta;
@@ -55,6 +56,13 @@ public class PreguntaControl {
 		}
 		askFrame.getComboBoxEtiquetasPregunta().setModel(new DefaultComboBoxModel(lista));	
 	}
+
+	public static void eventoMostrarContenidoEtiquetaPregunta() {
+
+		String nombreEtiqueta = (String) askFrame.getComboBoxEtiquetasPregunta().getSelectedItem();
+		String descripcion = pregunta.getEtiqueta(nombreEtiqueta).getDescripcion();
+		JOptionPane.showMessageDialog(null,nombreEtiqueta+ "\n"+descripcion);
+	}
 	
 	private static void mostrarTableRespuestas() {
 		
@@ -78,7 +86,33 @@ public class PreguntaControl {
 	}
 	
 	public static void eventoClickRespuestaTable(int idRespuesta) {
-		Respuesta respuesta = pregunta.getRespuestas().get(idRespuesta);
+		Respuesta respuesta = pregunta.getRespuesta(idRespuesta);
 		RespuestaControl.mostrar(respuesta);
+	}
+	
+	public static void eventoBtnEnviarRespuesta() {
+	
+		String respuesta = askFrame.getTextAreaRespuesta().getText();
+		
+		int aux = controlador.InicioControl.stackService.answer(pregunta.getId() , respuesta);
+		if(aux == 0) {
+			JOptionPane.showMessageDialog(null, "Respuesta enviada !!");
+			mostrarTableRespuestas();
+		}else if(aux == 2){
+			JOptionPane.showMessageDialog(null, "Esta pregunta se encuentra cerrado, no es posible recibir respuestas !!");
+		}else {
+			JOptionPane.showMessageDialog(null, "Sesión cerrada !! \n Para entregar una respuesta primero debe iniciar sesión.!!");
+		}
+		askFrame.getTextAreaRespuesta().setText("");
+
+	}
+	
+	public static void eventoBtnRecompensa() {
+		if(pregunta.getEstado().equals("Abierta.")) {//Y si la pregunta no esta abierta.
+			RecompensaControl.mostrar(pregunta);
+		}else {
+			JOptionPane.showMessageDialog(null, "No se pueden realizar recompensas!! \n Esta pregunta ya se encuentra cerrada.");
+		}
+		
 	}
 }

@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -114,6 +116,12 @@ public class GenerarPreguntaFrame extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		comboBoxEtiquetas = new JComboBox();
+		comboBoxEtiquetas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				controlador.GenerarPreguntaControl.eventoMostrarContenidoEtiqueta();
+			}
+		});
 		comboBoxEtiquetas.setModel(new DefaultComboBoxModel(new String[] {"Alma", "Sami", "Ingrid"}));
 		comboBoxEtiquetas.setBounds(30, 379, 179, 25);
 		contentPane.add(comboBoxEtiquetas);

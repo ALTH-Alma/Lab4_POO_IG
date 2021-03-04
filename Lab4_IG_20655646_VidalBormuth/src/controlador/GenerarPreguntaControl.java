@@ -80,6 +80,12 @@ public class GenerarPreguntaControl {
 		SesionIniciadaControl.mostrar("");
 		
 	}
+	public static void eventoMostrarContenidoEtiqueta() {
+
+		String nombreEtiqueta = (String) generadorAsk.getComboBoxEtiquetas().getSelectedItem();
+		String descripcion = InicioControl.stackService.getEtiqueta(nombreEtiqueta).getDescripcion();
+		JOptionPane.showMessageDialog(null,nombreEtiqueta+ "\n"+descripcion);
+	}
 	
 	
 

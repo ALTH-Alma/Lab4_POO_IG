@@ -24,8 +24,6 @@ public class PreguntaFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableRespuestas;
-
-
 	private JLabel lblPregunta;
 	private JLabel lblDescripcion;
 	private JLabel lblFecha;
@@ -35,7 +33,17 @@ public class PreguntaFrame extends JFrame {
 	private JLabel lblVotosFavor;
 	private JLabel lblVotosContra;
 	private JComboBox comboBoxEtiquetasPregunta;
+	private JButton btnEnviarRespuesta;
 	
+	
+	
+	public JButton getBtnEnviarRespuesta() {
+		return btnEnviarRespuesta;
+	}
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
 	
 	public JTable getTableRespuestas() {
 		return tableRespuestas;
@@ -162,7 +170,13 @@ public class PreguntaFrame extends JFrame {
 		btnVolver2.setBounds(583, 509, 130, 33);
 		contentPane.add(btnVolver2);
 		
-		JButton btnEnviarRespuesta = new JButton("Enviar respuesta");
+		btnEnviarRespuesta = new JButton("Enviar respuesta");
+		btnEnviarRespuesta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.PreguntaControl.eventoBtnEnviarRespuesta();
+			}
+		});
 		btnEnviarRespuesta.setBounds(39, 507, 185, 36);
 		contentPane.add(btnEnviarRespuesta);
 		
@@ -196,10 +210,22 @@ public class PreguntaFrame extends JFrame {
 		contentPane.add(lblVotosContra);
 		
 		JButton btnNewButton = new JButton("Recompensa");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.PreguntaControl.eventoBtnRecompensa();
+			}
+		});
 		btnNewButton.setBounds(577, 197, 136, 23);
 		contentPane.add(btnNewButton);
 		
 		comboBoxEtiquetasPregunta = new JComboBox();
+		comboBoxEtiquetasPregunta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				controlador.PreguntaControl.eventoMostrarContenidoEtiquetaPregunta();
+			}
+		});
 		comboBoxEtiquetasPregunta.setBounds(392, 196, 148, 22);
 		contentPane.add(comboBoxEtiquetasPregunta);
 		

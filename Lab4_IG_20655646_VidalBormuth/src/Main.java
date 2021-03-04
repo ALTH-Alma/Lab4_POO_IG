@@ -61,7 +61,7 @@ public class Main{
 		List<Respuesta> respuestas1, respuestas2, respuestas3, respuestas4, respuestas5;
 		respuestas1 = new ArrayList<Respuesta>(); respuestas1.add(res2); respuestas1.add(res1); respuestas1.add(res3);
 		respuestas2 = new ArrayList<Respuesta>(); respuestas2.add(res4); respuestas2.add(res5); respuestas2.add(res6);
-		respuestas3 = new ArrayList<Respuesta>(); respuestas3.add(res7); respuestas1.add(res8); 
+		respuestas3 = new ArrayList<Respuesta>(); respuestas3.add(res7); respuestas3.add(res8); 
 		respuestas4 = new ArrayList<Respuesta>(); respuestas4.add(res9); respuestas4.add(res10);
 		respuestas5 = new ArrayList<Respuesta>();
 		

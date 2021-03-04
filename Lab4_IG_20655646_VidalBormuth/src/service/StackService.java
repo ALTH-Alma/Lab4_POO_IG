@@ -2,6 +2,8 @@ package service;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import _TDAs.Etiqueta;
 import _TDAs.Pregunta;
 import _TDAs.Recompensa;
@@ -190,14 +192,18 @@ public class StackService {
 	 * @param idPregunta Identificador de la pregunta que se quiere responder. 
 	 * @param contenidoRespuesta Contenido de la nueva respuesta.
 	 */
-	public void answer(int idPregunta, String contenidoRespuesta) {
+	public int answer(int idPregunta, String contenidoRespuesta) {
         
         Pregunta pregunta = getPregunta(idPregunta);
-        if(pregunta != null && pregunta.getEstado().equals("Abierta.")) { //Si existe la pregunta y esta abierta
-        	pregunta.getRespuestas().add(new Respuesta(stack.getActiveUser().getName(), contenidoRespuesta)); //Se le agrega una respuesta a su lista de respuestas.
-        	System.out.println("\nHa entragado una respuesta a la pregunta "+idPregunta+".\n");
+        Usuario userA = stack.getActiveUser();
+        
+        if(pregunta == null || userA == null) {
+        	return 1;
+        }else if(pregunta.getEstado().equals("Abierta.")) { //Si existe la pregunta, existe usuario activo y esta abierta
+        	pregunta.getRespuestas().add(new Respuesta(userA.getName(), contenidoRespuesta)); //Se le agrega una respuesta a su lista de respuestas.
+        	return 0;
         }else {
-        	System.out.println("\n#NO SE A PODIDO REALIZAR LA RESPUESTA. Id inexistente.\n"); //Sino no hace nada.
+        	return 2;
         }		
 	}
 		
@@ -209,14 +215,11 @@ public class StackService {
 	 * @param montoRecompensa Monto que se le agrega a la recompensa (Debe der menor que la reputación actual del usuario al realizarce).
 	 * @param reputacionUA //Reputacion del usuario activo que agrega la recompensa.
 	 */
-	public void entregarRecompensa(Pregunta pregunta, int montoRecompensa, int reputacionUA) {
+	public void realizarRecompensa(Pregunta pregunta, int montoRecompensa, Usuario userA) {
 		
-		Usuario userA = stack.getActiveUser();
-		
-		//RecompensaService rs = new RecompensaService(pregunta.getRecompensa());
-		//rs.aumentarRecompensa(montoRecompensa, userA.getName()); //Se realiza la recompensa.
-		userA.setReputacion(reputacionUA-montoRecompensa); //se actualiza reputacion de usuario activo.
-		System.out.println("\nHa ofrecido una recompensa de "+montoRecompensa+" puntos por la pregunta "+pregunta.getId()+" !!!");
+		RewardService rewardService = new RewardService(pregunta.getRecompensa());
+		rewardService.aumentarRecompensa(montoRecompensa, userA.getName()); //Se realiza la recompensa.
+		userA.setReputacion(userA.getReputacion()-montoRecompensa); //se actualiza reputacion de usuario activo.
 	}
 	
 	/**
@@ -225,20 +228,23 @@ public class StackService {
 	 * @param montoRecompensa Monto a agregar en la recompensa (debe ser menor que la reputación
 	 * del usuario activo.
 	 */
-	public void reward(int idPregunta, int montoRecompensa) {
+	public int reward(Pregunta pregunta, int montoRecompensa) {
 		
-		int reputacionUA = stack.getActiveUser().getReputacion(); 
-		if(reputacionUA >= montoRecompensa) {//Si la recompensa es menor que la reputacion de UA...
-			Pregunta pregunta = getPregunta(idPregunta); 
-			if(pregunta != null && pregunta.getEstado().equals("Abierta.")) {//Y si la pregunta con el id existe y esta abierta.
-				entregarRecompensa(pregunta, montoRecompensa, reputacionUA); //Se entrega la recompensa.
-			}else {
-				System.out.println("#ID DE PREGUNTA INCORRECTO. No se pudo ofrecer la recompensa");
-			}
-		}else {
-			System.out.println("\n#REPUTACIÓN INSUFICIENTE. No puede ofrecer esta recompensa."); //Sino no hace nada.
+		Usuario userA = stack.getActiveUser();
+		
+		if(pregunta == null || userA == null) { //Si no hay usuario activo o no existe la pregunta...
+			return -2; //Retorna -2.
 		}
-		
+		else {
+			int reputacionUA = userA.getReputacion();
+			
+			if(reputacionUA < montoRecompensa) {//Si la recompensa es mayor que la reputacion de UA...
+				return reputacionUA; //Retorna -3.
+			}else { //Sino..
+				realizarRecompensa(pregunta, montoRecompensa, userA); //Se entrega la recompensa.
+				return -3; //retorna -3;
+			}
+		}
 	}
 
 	
@@ -254,7 +260,7 @@ public class StackService {
 	 * @param recompensa Recompensa por la pregunta a la que corresponde la respuesta. 
 	 */
 	private void aceptarRespuesta(Respuesta respuesta, Recompensa recompensa) {
-		//RecompensaService rs = new RecompensaService(recompensa);
+		RewardService rs = new RewardService(recompensa);
 		if(respuesta != null && respuesta.getEstado().equals("Pendiente.")) {//Si la respuesta existe y su estado es pendiente.
 			respuesta.setEstado("Aceptada."); //Se acepta la respuesta.
 			//getUser(respuesta.getAutor()).agregarPuntosAReputacion((15+rs.entregarRecompensa())); //Se actualiza reputacion de autor de la respuesta.

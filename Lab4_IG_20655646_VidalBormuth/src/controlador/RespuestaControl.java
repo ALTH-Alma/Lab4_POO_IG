@@ -12,7 +12,7 @@ public class RespuestaControl {
 		
 		respuestaFrame.getLblRespuesta().setText(answer.getContenido());
 		respuestaFrame.getLblFecha().setText(answer.getFechaDePublicacion());
-		respuestaFrame.getLblAutor().setText(answer.getAutor());
+		respuestaFrame.getLblAutor().setText("Autor: "+answer.getAutor());
 		respuestaFrame.getLblEstado().setText(answer.getEstado());
 		respuestaFrame.getLblVotosFavor().setText(Integer.toString(answer.getVotosAFavor()));
 		respuestaFrame.getLblVotosContra().setText(Integer.toString(answer.getVotosEnContra()));
@@ -20,5 +20,13 @@ public class RespuestaControl {
 	}
 	public static void ocultar() {
 		respuestaFrame.setVisible(false);
+	}
+	
+	public static void eventoBtnVolverR() {
+		ocultar();
+	}
+	
+	public static void eventoAceptarRespuesta() {
+		
 	}
 }
