@@ -85,7 +85,7 @@ public class RegistroFrame extends JFrame {
 		lblNomNU.setHorizontalAlignment(SwingConstants.LEFT);
 		contentPane.add(lblNomNU);
 		
-		JLabel lblPass = new JLabel("Contraseña");
+		JLabel lblPass = new JLabel("Clave");
 		lblPass.setBounds(142, 107, 89, 24);
 		lblPass.setHorizontalAlignment(SwingConstants.LEFT);
 		contentPane.add(lblPass);

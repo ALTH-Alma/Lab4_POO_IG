@@ -83,7 +83,7 @@ public class AccederFrame extends JFrame {
 		lblNomUser.setHorizontalAlignment(SwingConstants.LEFT);
 		contentPane.add(lblNomUser);
 
-		JLabel lblPass = new JLabel("Contraseña");
+		JLabel lblPass = new JLabel("Clave");
 		lblPass.setBounds(142, 107, 89, 24);
 		lblPass.setHorizontalAlignment(SwingConstants.LEFT);
 		contentPane.add(lblPass);
