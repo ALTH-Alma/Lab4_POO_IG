@@ -83,7 +83,7 @@ public class CrearEtiquetaFrame extends JFrame {
 		contentPane.add(textFieldNEtiqueta);
 		textFieldNEtiqueta.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Descripción:");
+		JLabel lblNewLabel_2 = new JLabel("Descripcion:");
 		lblNewLabel_2.setBounds(39, 77, 70, 20);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		contentPane.add(lblNewLabel_2);

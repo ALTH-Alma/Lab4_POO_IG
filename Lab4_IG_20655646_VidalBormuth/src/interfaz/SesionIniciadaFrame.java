@@ -86,7 +86,7 @@ public class SesionIniciadaFrame extends JFrame {
 		lblTitulo.setBackground(Color.BLACK);
 		contentPane.add(lblTitulo);
 		
-		JButton btnIniSesion = new JButton("Cerrar sesión");
+		JButton btnIniSesion = new JButton("Cerrar sesion");
 		btnIniSesion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -141,7 +141,7 @@ public class SesionIniciadaFrame extends JFrame {
 				{null, "Hola", null, null, null},
 			},
 			new String[] {
-				"ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"
+				"ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicacion"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {

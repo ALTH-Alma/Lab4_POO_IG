@@ -57,7 +57,7 @@ public class SesionIniciadaControl {
 		
 		sesionIniciada.getTablePreguntasStack().setModel(new DefaultTableModel(
 			matriz,
-			new String[] { "ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"}
+			new String[] { "ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicacion"}
 			)  {
 			boolean[] columnEditables = new boolean[] {
 					false, false, false, false, false
@@ -76,12 +76,12 @@ public class SesionIniciadaControl {
 		
 		if(controlador.InicioControl.stackService.logout()) { //Si se logra cerrar sesion..
 			ocultar(); //Se oculta la ventana
-			JOptionPane.showMessageDialog(null, activeUserName + " ha cerrado sesión !!");
+			JOptionPane.showMessageDialog(null, activeUserName + " ha cerrado sesion !!");
 			InicioControl.mostrar(); //y se muestra la ventada de inicio stack.
 			
 		}else { //Si no
 			ocultar();
-			JOptionPane.showMessageDialog(null,"No existe sesión iniciada !!");
+			JOptionPane.showMessageDialog(null,"No existe sesion iniciada !!");
 			InicioControl.mostrar(); //Se muestra el inicio.
 		}
 		

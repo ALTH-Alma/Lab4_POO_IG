@@ -58,7 +58,7 @@ public class AccederControl {
 		
 		if( aux == 0){ //Si login arroja un 0, se inicia sesión.
 			ocultar(); //Se cierra ventana.
-			JOptionPane.showMessageDialog(null, userName+" ha iniciado sesión !!");
+			JOptionPane.showMessageDialog(null, userName+" ha iniciado sesion !!");
 			SesionIniciadaControl.mostrar(userName); //Se muestra ventana de inicio de sesión.
 		//Si es otro numero, se muestran mensajes informando de los errores del usuarios y laas causas de que no puedan iniciar sesion segun corresponda el numero.	
 		}else if(aux == 1) { 
@@ -67,7 +67,7 @@ public class AccederControl {
 			JOptionPane.showMessageDialog(null,"Nombre de usuario incorrecto o usuario inexistente !!"+"\n Por favor intentelo nuevamente.");
 		}else if (aux == 3) {
 			ocultar();
-			JOptionPane.showMessageDialog(null,"Ya existe sesión activa !!"+"\n Si desea inciar una nueva sesión cierre sesión activa.");
+			JOptionPane.showMessageDialog(null,"Ya existe sesion activa !!"+"\n Si desea inciar una nueva sesión cierre sesion activa.");
 			SesionIniciadaControl.mostrar(userName);
 		}else {
 			JOptionPane.showMessageDialog(null,"ERROR");

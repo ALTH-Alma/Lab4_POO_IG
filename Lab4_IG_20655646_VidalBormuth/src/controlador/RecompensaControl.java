@@ -60,14 +60,14 @@ public class RecompensaControl {
 				JOptionPane.showMessageDialog(null, "Recompensa ofrecida!!");
 				ocultar();
 			}else if(aux == -2) {
-				JOptionPane.showMessageDialog(null, "Sesión cerrada!! \n Si desea realizara una recompensa primero debe iniciar sesión en stackOverflow.");
+				JOptionPane.showMessageDialog(null, "Sesion cerrada!! \n Si desea realizara una recompensa primero debe iniciar sesion en stackOverflow.");
 				ocultar();
 			}else {
 				JOptionPane.showMessageDialog(null, "Su reputacion es de "+aux+ " puntos \n No es suficiente para la recompensa ofrecida.");
 			}
 			
 		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "Por favor inserte un valor númerico");
+			JOptionPane.showMessageDialog(null, "Por favor inserte un valor numerico");
 		}
 		recompensaFrame.getTextFieldPtsRecompensaOfrecida().setText(""); //Se limpia la barra con los datos ingresados.
 		

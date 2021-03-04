@@ -186,7 +186,7 @@ public class PreguntaFrame extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "Respuestas", "Usuario", "Fecha de publicaci\u00F3n"
+				"ID", "Respuestas", "Usuario", "Fecha de publicacion"
 			}
 		));
 		tableRespuestas.getColumnModel().getColumn(0).setPreferredWidth(55);

@@ -78,7 +78,7 @@ public class InicioFrame extends JFrame {
 		lblTitulo.setBackground(Color.BLACK);
 		contentPane.add(lblTitulo);
 		
-		JButton btnIniSesion = new JButton("Iniciar sesión");
+		JButton btnIniSesion = new JButton("Iniciar sesion");
 		btnIniSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -137,7 +137,7 @@ public class InicioFrame extends JFrame {
 				{null, null, null, null, null},
 			},
 			new String[] {
-				"ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"
+				"ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicacion"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {

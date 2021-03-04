@@ -112,7 +112,7 @@ public class PreguntaControl {
 		askFrame.getTableRespuestas().setModel(new DefaultTableModel(
 				matriz,
 				new String[] {
-					"ID", "Respuestas", "Usuario", "Fecha de publicaci\u00F3n"
+					"ID", "Respuestas", "Usuario", "Fecha de publicacion"
 				}
 			)); //Se modifica la tabla de la ventana añadiendo la matriz con las respuestas.
 	}
@@ -145,7 +145,7 @@ public class PreguntaControl {
 		}else if(aux == 2){
 			JOptionPane.showMessageDialog(null, "Esta pregunta se encuentra cerrado, no es posible recibir respuestas !!");
 		}else {
-			JOptionPane.showMessageDialog(null, "Sesión cerrada !! \n Para entregar una respuesta primero debe iniciar sesión.!!");
+			JOptionPane.showMessageDialog(null, "Sesion cerrada !! \n Para entregar una respuesta primero debe iniciar sesion.!!");
 		}
 		askFrame.getTextAreaRespuesta().setText(""); //Se limpia la barra que pide la respuesta.
 

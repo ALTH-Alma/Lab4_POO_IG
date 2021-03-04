@@ -78,7 +78,7 @@ public class PerfilControl {
 		
 		perfilFrame.getTablePreguntasUser().setModel(new DefaultTableModel(
 			matriz,
-			new String[] { "ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"}
+			new String[] { "ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicacion"}
 			)  {
 			boolean[] columnEditables = new boolean[] {
 					false, false, false, false, false

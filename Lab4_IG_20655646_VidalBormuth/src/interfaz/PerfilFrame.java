@@ -94,7 +94,7 @@ public class PerfilFrame extends JFrame {
 		lblReputacionUser.setBounds(180, 82, 118, 22);
 		contentPane.add(lblReputacionUser);
 		
-		JLabel lblNewLabel_2 = new JLabel("Puntos de reputación:");
+		JLabel lblNewLabel_2 = new JLabel("Puntos de reputacion:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_2.setBounds(38, 83, 144, 18);
 		contentPane.add(lblNewLabel_2);
@@ -132,7 +132,7 @@ public class PerfilFrame extends JFrame {
 				{null, null, null, null, null},
 			},
 			new String[] {
-				"ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicaci\u00F3n"
+				"ID", "Preguntas", "Usuario", "Respuestas", "Fecha de publicacion"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
