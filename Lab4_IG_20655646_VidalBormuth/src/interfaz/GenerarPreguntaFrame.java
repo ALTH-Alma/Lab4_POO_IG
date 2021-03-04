@@ -1,27 +1,17 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JSpinner;
-import javax.swing.JTabbedPane;
-import javax.swing.JCheckBox;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.KeyStroke;
-import java.awt.event.KeyEvent;
 import javax.swing.JButton;
-import javax.swing.DropMode;
-import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.JScrollPane;
@@ -29,6 +19,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Objects;
 
+
+/**
+ * Clase que representa la vista de la ventana que permite crear una nueva pregunta en stack. 
+ * @author Alma
+ *
+ */
 public class GenerarPreguntaFrame extends JFrame {
 
 	private JPanel contentPane;
@@ -36,18 +32,26 @@ public class GenerarPreguntaFrame extends JFrame {
 	private JComboBox<Objects> comboBoxEtiquetas;
 	private JTextArea textAreaContenidoR;
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
+	/**
+	 * Metodo de obtención para obtener el titulo de la pregunta que se muestra por el JTextField.
+	 * @return el titulo de la pregunta.
+	 */
 	public JTextField getTextFieldTPregunta() {
 		return textFieldTPregunta;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el combobox que almacenara las etiquetas de la pregunta.
+	 * @return combobox de etiquetas.
+	 */
 	public JComboBox getComboBoxEtiquetas() {
 		return comboBoxEtiquetas;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el contenido de la pregunta que se ingresa por JTextArea.
+	 * @return contenido pregunta.
+	 */
 	public JTextArea getTextAreaContenidoR() {
 		return textAreaContenidoR;
 	}
@@ -119,7 +123,7 @@ public class GenerarPreguntaFrame extends JFrame {
 		comboBoxEtiquetas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				controlador.GenerarPreguntaControl.eventoMostrarContenidoEtiqueta();
+				controlador.GenerarPreguntaControl.eventoMostrarContenidoEtiqueta(); //Event Handler para controlar el click sobre la combobox. Permite llevar al evento para la descripcion de la etiqueta seleccionada. 
 			}
 		});
 		comboBoxEtiquetas.setModel(new DefaultComboBoxModel(new String[] {"Alma", "Sami", "Ingrid"}));
@@ -130,7 +134,7 @@ public class GenerarPreguntaFrame extends JFrame {
 		btnAddEtiqueta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.GenerarPreguntaControl.eventoBtnAgregarEtiqueta();
+				controlador.GenerarPreguntaControl.eventoBtnAgregarEtiqueta(); //Event Handler para controlar el click del boton agregar etiqueta. Permite llevar al evento para agregar una etiqueta a la lista de etiquetas de la pregunta. 
 			}
 		});
 		btnAddEtiqueta.setBounds(219, 379, 203, 25);
@@ -140,7 +144,7 @@ public class GenerarPreguntaFrame extends JFrame {
 		btnCrearEtiqueta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.GenerarPreguntaControl.eventoBtnCrearEtiqueta();
+				controlador.GenerarPreguntaControl.eventoBtnCrearEtiqueta(); //Event Handler para controlar el click del boton crear nueva etiqueta. Permite llevar al evento para crear una nueva etiqueta en el stack. Abrir ventana.
 			}
 		});
 		btnCrearEtiqueta.setBounds(432, 379, 220, 25);
@@ -151,7 +155,7 @@ public class GenerarPreguntaFrame extends JFrame {
 		btnEnviarPregunta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.GenerarPreguntaControl.eventoBtnEnviarPregunta();
+				controlador.GenerarPreguntaControl.eventoBtnEnviarPregunta(); //Event Handler para controlar el click del boton enviar pregunta. Permite llevar al evento para crear una nueva pregunta en el stack. 
 			}
 		});
 		btnEnviarPregunta.setBounds(30, 467, 191, 50);
@@ -162,7 +166,7 @@ public class GenerarPreguntaFrame extends JFrame {
 		btnCancelar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.GenerarPreguntaControl.eventoBtnCancelar();
+				controlador.GenerarPreguntaControl.eventoBtnCancelar(); //Event Handler para controlar el click del boton cancelar. Permite llevar al evento para dejar de intentar crear una nueva pregunta. 
 			}
 		});
 		btnCancelar.setBounds(461, 467, 191, 50);

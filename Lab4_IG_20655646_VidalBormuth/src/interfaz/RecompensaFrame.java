@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,16 +14,29 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Clase que representa la vista de la ventana que permite visualizar y entregar una recompensa. 
+ * @author Alma
+ *
+ */
 public class RecompensaFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldPtsRecompensaOfrecida;
 	private JLabel lblRecompensa;
 
+	/**
+	 * Metodo de obtención para obtener el monto de la recompensa que es ingresada en el JTextField.
+	 * @return monto recompensa.
+	 */
 	public JTextField getTextFieldPtsRecompensaOfrecida() {
 		return textFieldPtsRecompensaOfrecida;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que mostrara la recompensa de una pregunta Monto.
+	 * @return Jlabel para mostrar recompensa.
+	 */
 	public JLabel getLblRecompensa() {
 		return lblRecompensa;
 	}
@@ -82,7 +94,7 @@ public class RecompensaFrame extends JFrame {
 		btnRecompensa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.RecompensaControl.eventoBtnOfrecerRecompensa();
+				controlador.RecompensaControl.eventoBtnOfrecerRecompensa();  //Event Handler para controlar el click del boton ofrecer recompensa. Permite llevar al evento para ofrecer una recompensa por una pregunta. 
 			}
 		});
 		btnRecompensa.setBounds(25, 140, 190, 23);
@@ -92,7 +104,7 @@ public class RecompensaFrame extends JFrame {
 		btnVolverRecompensa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.RecompensaControl.eventoBtnVolverR();
+				controlador.RecompensaControl.eventoBtnVolverR();  //Event Handler para controlar el click del boton volver (cerrar). Permite llevar al evento para salir del evento para ofrecer una recompensa. 
 			}
 		});
 		btnVolverRecompensa.setBounds(282, 140, 103, 23);

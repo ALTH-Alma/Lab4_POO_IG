@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,16 +14,35 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import java.awt.Color;
 
+
+/**
+ * Clase que representa la vista de la ventana que permite registrarse en StackOverflow.. 
+ * @author Alma
+ *
+ */
 public class RegistroFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNewPass;
 	private JTextField textFieldNewUserName;
 
+	
+	/**
+	 * Metodo de obtención para obtener clave ingresada en JTextField.
+	 * @return la clave del usuario.
+	 */
+	public JTextField getTextFieldNewPass() {
+		return textFieldNewPass;
+	}
+
+	/**
+	 * Metodo de obtención para obtener nombre de usuario ingresad en JTextField.
+	 * @return nombre de usuario.
+	 */
+	public JTextField getTextFieldNewUserName() {
+		return textFieldNewUserName;
+	}
 
 	/**
 	 * Launch the application.
@@ -40,23 +58,6 @@ public class RegistroFrame extends JFrame {
 				}
 			}
 		});
-	}
-	
-
-	public JTextField getTextFieldNewPass() {
-		return textFieldNewPass;
-	}
-
-	public JTextField getTextFieldNewUserName() {
-		return textFieldNewUserName;
-	}
-
-	public void setTextFieldNewPass(JTextField textFieldNewPass) {
-		this.textFieldNewPass = textFieldNewPass;
-	}
-
-	public void setTextFieldNewUserName(JTextField textFieldNewUserName) {
-		this.textFieldNewUserName = textFieldNewUserName;
 	}
 
 
@@ -103,11 +104,7 @@ public class RegistroFrame extends JFrame {
 		btnRegister.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.RegisterControl.eventoBtnRegister();
-			}
-		});
-		btnRegister.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+				controlador.RegisterControl.eventoBtnRegister(); //Event Handler para controlar el click del boton registrarse. Permite llevar al evento para registrarse en el stack. 
 			}
 		});
 		btnRegister.setBounds(143, 170, 166, 23);
@@ -117,7 +114,7 @@ public class RegistroFrame extends JFrame {
 		btnVolver1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.RegisterControl.eventoBtnVolver();
+				controlador.RegisterControl.eventoBtnVolver(); //Event Handler para controlar el click del boton Volver. Permite llevar al evento para salir del registro e ir al inicio. 
 			}
 		});
 		btnVolver1.setBounds(142, 203, 166, 23);

@@ -85,14 +85,6 @@ public class Usuario {
 	public void setReputacion(int reputacion) {
 		this.reputacion = reputacion;
 	}
-	
-	
-	/**
-	 * Muestra un usuario.
-	 */
-	public void mostrarUsuario() {
-		System.out.println("Nombre: "+name+"\nContraseña: "+pass+"\nReputación: "+reputacion+"\n");
-	}
 
 	
 	/**

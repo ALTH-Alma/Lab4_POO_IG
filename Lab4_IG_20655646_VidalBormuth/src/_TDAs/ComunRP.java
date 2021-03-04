@@ -196,15 +196,5 @@ public class ComunRP {
 	}
 	
 	
-	/**
-	 * Muestra el objeto comunResPreg
-	 */
-	public void mostrarComun() {
-		
-		System.out.println("Contenido:\n "+contenido+"\nAutor: "+autor+"\nFecha publicación: "+fechaDePublicacion+
-				"\nEstado: "+estado+"\nVotos a favor: "+votosAFavor+"\nVotos en contra: "+votosEnContra+"\nNúmero de reportes: "+reportes);
-		
-	}
-	
 
 }

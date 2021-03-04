@@ -35,18 +35,6 @@ public class Respuesta extends ComunRP {
 		super(autor, contenido, estado, votosAFavor, votosEnContra, reportes);
 		setId(++count1); //El id único incremental se incrementa. 
 	}
-
-
-	/**
-	 *Muestra una respuesta. 
-	 */
-	@Override
-	public void mostrarComun() {
-		
-		System.out.println("ID Respuesta: "+getId());
-		super.mostrarComun();	
-		System.out.println("\n");
-	}
 	
 
 }

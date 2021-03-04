@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -20,6 +19,12 @@ import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
+/**
+ * Clase que representa la vista de la ventana que permite vizualizar el perfil del usuario activo en el stack. 
+ * @author Alma
+ *
+ */
 public class PerfilFrame extends JFrame {
 
 	private JPanel contentPane;
@@ -27,14 +32,26 @@ public class PerfilFrame extends JFrame {
 	private JLabel lblUserName;
 	private JLabel lblReputacionUser;
 
+	/**
+	 * Metodo de obtención para obtener la tabla que mostrara el listado de preguntas pertenecientes al usuario activo.
+	 * @return tabla para preguntas usuario.
+	 */
 	public JTable getTablePreguntasUser() {
 		return tablePreguntasUser;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que mostrara el nombre del usuario activo.
+	 * @return JLabel de nombre.
+	 */
 	public JLabel getLblUserName() {
 		return lblUserName;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que mostrara la reputación del usuario activo.
+	 * @return JLabel de reputación.
+	 */
 	public JLabel getLblReputacionUser() {
 		return lblReputacionUser;
 	}
@@ -95,11 +112,12 @@ public class PerfilFrame extends JFrame {
 		tablePreguntasUser = new JTable();
 		tablePreguntasUser.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) { //Event Handler para controlar el click sobre preguntas en la tabla de preguntas. Permite llevar al evento para visualizar la pregunta. 
+				//Se optiene la columna de la tabal que se presiona.
 		        Point point = e.getPoint(); 
 		        int row = tablePreguntasUser.rowAtPoint(point); 
-		        int idPregunta = Integer.parseInt(String.valueOf(tablePreguntasUser.getValueAt(row,0))); 
-		    	controlador.PerfilControl.eventoClickPreguntaTableUser(idPregunta, true);
+		        int idPregunta = Integer.parseInt(String.valueOf(tablePreguntasUser.getValueAt(row,0))); //De la columna se obtiene el id de la pregunta.
+		    	controlador.PerfilControl.eventoClickPreguntaTableUser(idPregunta, true); //Controla evento.
 			}
 		});
 
@@ -129,7 +147,7 @@ public class PerfilFrame extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.PerfilControl.eventoBtnVolverP();
+				controlador.PerfilControl.eventoBtnVolverP();  //Event Handler para controlar el click del boton Volver. Permite llevar al evento para salir del perfil del usuario activo. 
 			}
 		});
 		btnNewButton.setBounds(601, 389, 111, 30);

@@ -2,7 +2,7 @@ package _TDAs;
 
 /**
  * Clase que representa etiquetas en el stack.
- * Esta clase queda determinada por una nombre y una decripición.
+ * Esta clase queda determinada por una nombre y una descripición.
  * @author Alma
  *
  */
@@ -56,11 +56,5 @@ public class Etiqueta {
 		this.descripcion = descripcion;
 	}
 	
-	/**
-	 * Muestra la etiqueta. 
-	 */
-	public void mostrarEtiqueta() {
-		System.out.println(name+": "+descripcion+"\n");
-	}
 	
 }

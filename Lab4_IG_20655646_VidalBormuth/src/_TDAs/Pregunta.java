@@ -128,6 +128,11 @@ public class Pregunta extends ComunRP{
 		this.respuestas = respuestas;
 	}
 	
+	/**
+	 * Toma una respuesta de la lista de respuesta de la pregunta segun su id.
+	 * @param idRespuesta Identificador numerico de la respuesta.
+	 * @return la respuesta buscada y si no la encuentra null.
+	 */
 	public Respuesta getRespuesta(int idRespuesta) {
 		
         for(Respuesta respuesta: respuestas){
@@ -136,17 +141,21 @@ public class Pregunta extends ComunRP{
 			}
         }
         return null;
-		
 	}
 	
+	/**
+	 * Encuentra y entrega una etiqueta de una lista de etiquetas segun su nombre.
+	 * @param etiquetaName String nombre que identifica a la etiqueta.
+	 * @return Etiqueta buscada.
+	 */
 	public Etiqueta getEtiqueta(String etiquetaName) {
 		
-		for(Etiqueta etiqueta: etiquetas) {//Recorre toda la lista de usuarios hasta encontrarlo.
+		for(Etiqueta etiqueta: etiquetas) {//Recorre toda la lista de etiquetas hasta encontrarla.
 			if(etiqueta.getName().equals(etiquetaName)) {
-				return etiqueta; //Si lo encuentra retorna al usuario. 
+				return etiqueta; //Si lo encuentra retorna la etiqueta. 
 			}
 		}
-		return null; //Si no lo encuentra retorna null.
+		return null; //Si no la encuentra retorna null.
 	}
 
 	

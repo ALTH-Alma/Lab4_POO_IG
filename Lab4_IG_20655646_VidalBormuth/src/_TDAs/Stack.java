@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Clase que representa un stack.
- * Esta clase esta determinada por un id único incremental, una lista de usuarios, una lista de preguntas y una lista de etiquetas. 
+ * Esta clase esta determinada por un id único incremental, una lista de usuarios, una lista de preguntas, una lista de etiquetas y un usuario para representar el usuario activo en el stack. 
  * @author Alma
  *
  */
@@ -15,7 +15,7 @@ public class Stack  {
 	private List<Usuario> usuarios; //Lista de usuarios.
 	private List<Pregunta> preguntas; //Lista de preguntas.
 	private List<Etiqueta> etiquetas; //Lista de etiquetas. 
-	private Usuario activeUser = null;
+	private Usuario activeUser = null; //Usuario activo.
 	/**
 	 * Crea un nuevo stack a partir de una lista de usuarios, una lista de preguntas y una lista de etiquetas. 
 	 * @param usuarios Lista de usuarios.
@@ -29,6 +29,9 @@ public class Stack  {
 
 	}
 	
+	/**
+	 * Crea un nuevo stack sin ningun parametro, inicializando todo desde cero.
+	 */
 	public Stack() {
 		this.usuarios = new ArrayList<Usuario>();
 		this.preguntas = new ArrayList<Pregunta>();
@@ -79,30 +82,21 @@ public class Stack  {
 		this.etiquetas = etiquetas;
 	}
 
-	
-	
+	/**
+	 * Entrega al usuario activo en el stack
+	 * @return Usuario activo.
+	 */
 	public Usuario getActiveUser() {
 		return activeUser;
 	}
 
+	/**
+	 * Permite modificar al usuario activo del stack.
+	 * @param activeUser Nuevo usuario activo.
+	 */
 	public void setActiveUser(Usuario activeUser) {
 		this.activeUser = activeUser;
 	}
 	
-
-	/**
-	 * Muestra un stack y sus atributos. 
-	 */
-//	public void mostrarStack() {
-//		MostrarListStackService sl = new MostrarListStackService();
-//		System.out.println("\n___________________________Stack Overflow____________________________ ");
-//		sl.mostrarUsuarios(usuarios);
-//		sl.mostrarPreguntas(preguntas);
-//	}
-
-	
-	
-
-
 	
 }

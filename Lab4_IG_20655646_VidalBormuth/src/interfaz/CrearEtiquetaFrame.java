@@ -14,16 +14,29 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Clase que representa la vista de la ventana que permite crear una nueva etiqueta en stack. 
+ * @author Alma
+ *
+ */
 public class CrearEtiquetaFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNEtiqueta;
 	private JTextArea textAreaDEtiqueta;
 
+	/**
+	 * Metodo de obtención para obtener el nombre de la etiqueta ingresado en JTextField.
+	 * @return el nombre de la etiqueta.
+	 */
 	public JTextField getTextFieldNEtiqueta() {
 		return textFieldNEtiqueta;
 	}
 
+	/**
+	 * Metodo de obtención para obtener la descripcion de la etiqueta ingresado en JTextArea.
+	 * @return descripcion de la etiqueta.
+	 */
 	public JTextArea getTextAreaDEtiqueta() {
 		return textAreaDEtiqueta;
 	}
@@ -79,7 +92,7 @@ public class CrearEtiquetaFrame extends JFrame {
 		btnCrearEtiqueta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.CrearEtiquetaControl.eventoBtnCrearEtiqueta();
+				controlador.CrearEtiquetaControl.eventoBtnCrearEtiqueta(); //Event Handler para controlar el click del boton crear etiqueta. Permite llevar al evento para crear una nueva etiqueta en el stack. 
 			}
 		});
 		btnCrearEtiqueta.setBounds(119, 239, 131, 23);
@@ -89,7 +102,7 @@ public class CrearEtiquetaFrame extends JFrame {
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.CrearEtiquetaControl.eventoBtnCancel();
+				controlador.CrearEtiquetaControl.eventoBtnCancel(); //Event Handler para controlar el click del boton cancelar. Permite llevar al evento para salir de la ventana para crear etiqueta. 
 			}
 		});
 		btnCancel.setBounds(263, 239, 116, 23);

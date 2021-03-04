@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -13,7 +12,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
@@ -22,21 +20,24 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-import service.StackService;
-
 import javax.swing.border.LineBorder;
-import javax.swing.ScrollPaneConstants;
 
+
+/**
+ * Clase que representa la vista de la ventana que permite dar inicio al sistema de StackOverflow.. 
+ * @author Alma
+ *
+ */
 public class InicioFrame extends JFrame {
 	
-
-
 	private JPanel contentPane;
-	private static AccederFrame acceder = new AccederFrame();
-	private static RegistroFrame registro = new RegistroFrame();
 	private JTable tablePreguntasStack;
 	
 
+	/**
+	 * Metodo de obtención para obtener la tabla que mostrara el listado de preguntas del stack.
+	 * @return tabla para preguntas stack.
+	 */
 	public JTable getTablePreguntasStack() {
 		return tablePreguntasStack;
 	}
@@ -85,7 +86,7 @@ public class InicioFrame extends JFrame {
 		btnIniSesion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.InicioControl.eventoBtnIngresar();
+				controlador.InicioControl.eventoBtnIngresar(); //Event Handler para controlar el click del boton Iniciar sesión. Permite llevar al evento para ingresar al stack. Ventana de inicio sesion. 
 			}
 		});
 		
@@ -99,7 +100,7 @@ public class InicioFrame extends JFrame {
 		btnRegistro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.InicioControl.eventoBtnRegistrarse();
+				controlador.InicioControl.eventoBtnRegistrarse(); //Event Handler para controlar el click del boton Registrarse. Permite llevar al evento para registrarse en el stack. Ventana de Registrarse.
 			}
 		});
 		btnRegistro.setBounds(85, 190, 133, 35);
@@ -116,12 +117,12 @@ public class InicioFrame extends JFrame {
 		tablePreguntasStack = new JTable();
 		tablePreguntasStack.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mousePressed(MouseEvent e) {
-
+			public void mousePressed(MouseEvent e) {//Event Handler para controlar el click sobre preguntas en la tabla de preguntas. Permite llevar al evento para visualizar la pregunta. 
+				//Se optiene la columna de la tabal que se presiona.
 		        Point point = e.getPoint(); 
 		        int row = tablePreguntasStack.rowAtPoint(point); 
-		        int idPregunta = Integer.parseInt(String.valueOf(tablePreguntasStack.getValueAt(row,0))); 
-		    	controlador.InicioControl.eventoClickPreguntaTable(idPregunta, false);
+		        int idPregunta = Integer.parseInt(String.valueOf(tablePreguntasStack.getValueAt(row,0))); //De la columna se obtiene el id de la pregunta.
+		    	controlador.InicioControl.eventoClickPreguntaTable(idPregunta, false); //Controla evento.
 
 			}
 		});
