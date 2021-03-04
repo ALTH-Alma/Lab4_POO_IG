@@ -17,7 +17,7 @@ import java.awt.event.MouseEvent;
 
 
 /**
- * Clase que representa la vista de la ventana que permite registrarse en StackOverflow.. 
+ * Clase que representa la vista de la ventana que permite registrarse en StackOverflow.
  * @author Alma
  *
  */

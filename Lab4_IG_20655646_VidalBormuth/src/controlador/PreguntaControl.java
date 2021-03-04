@@ -12,16 +12,28 @@ import _TDAs.Respuesta;
 import _TDAs.Usuario;
 import interfaz.PreguntaFrame;
 
-
+/**
+ * Clase que representa el controlador para la vista de la ventana que permite visualizar una pregunta del stack. 
+ * @author Alma
+ *
+ */
 public class PreguntaControl {
 	
-	public static PreguntaFrame askFrame = new PreguntaFrame();
-	private static Pregunta pregunta;
-	private static Boolean perfil;
+	public static PreguntaFrame askFrame = new PreguntaFrame(); //Posee una ventana de pregunta.
+	private static Pregunta pregunta; //Una pregunta
+	private static Boolean perfil; //Y un booleano que ayuda a determinar si el usuario esta viendo su lista de preguntas propias o la lista general. True = personal, False = general.
 	
+	
+	/**
+	 *  * Permite mostrar la ventana actualizando alguno de sus datos.
+	 * @param ask Pregunta que se muestra por la ventana.
+	 * @param bool el booleano aux para determianar personal o general.
+	 */
 	public static void mostrar(Pregunta ask, Boolean bool) {
+		//Se guardan los datos.
 		pregunta = ask;
 		perfil = bool;
+		//Se modifican los lbl's de la ventana con los datos de la pregunta, de esta forma mostrar por la ventana la preguntay sus componentes.
 		askFrame.getLblPregunta().setText(ask.getTitulo());
 		askFrame.getLblDescripcion().setText(ask.getContenido());
 		askFrame.getLblFecha().setText(ask.getFechaDePublicacion());
@@ -29,13 +41,18 @@ public class PreguntaControl {
 		askFrame.getLblEstado().setText(ask.getEstado());
 		askFrame.getLblVotosFavor().setText(Integer.toString(ask.getVotosAFavor()));
 		askFrame.getLblVotosContra().setText(Integer.toString(ask.getVotosEnContra()));
-		mostrarListaEtiquetasPregunta();
-		mostrarTableRespuestas();
-		askFrame.setVisible(true);
+		mostrarListaEtiquetasPregunta(); //Se muestra la lista de etiquetas de la pregunta.
+		mostrarTableRespuestas(); //Y sus respuestas listadas en una tabla.
+		askFrame.setVisible(true); //Se muestra la ventana.
 	}
+	
+	/**
+	 * Oculta la ventana.
+	 */
 	public static void ocultar() {
 		askFrame.setVisible(false);
 	}
+	
 	
 	public static void eventoBtnVolverPregunta() {
 		Usuario userA = InicioControl.stackService.getStack().getActiveUser();
@@ -49,23 +66,31 @@ public class PreguntaControl {
 		}
 	}
 	
+	/**
+	 * Permite mostrar la lista de etiquetas de una pregunta en un combobox.
+	 */
 	private static void mostrarListaEtiquetasPregunta() {
 		
 		List<Etiqueta> etiquetas = pregunta.getEtiquetas();
 		String lista[] = new String[etiquetas.size()];
 		
-		for( int i = 0; i < etiquetas.size(); i++) {
+		for( int i = 0; i < etiquetas.size(); i++) {//Se copia la lista de etiquetas en la nueva lista.
 			lista[i] = etiquetas.get(i).getName();
 		}
-		askFrame.getComboBoxEtiquetasPregunta().setModel(new DefaultComboBoxModel(lista));	
+		askFrame.getComboBoxEtiquetasPregunta().setModel(new DefaultComboBoxModel(lista));	//Se modifica la comboboc con una lista hecha de la lista de etiquetas.
 	}
 
+	
+	/**
+	 * Permite ver una etiqueta y su descripcion al hacer click en combobox con la etiqueta selecionada.
+	 */
 	public static void eventoMostrarContenidoEtiquetaPregunta() {
 
-		String nombreEtiqueta = (String) askFrame.getComboBoxEtiquetasPregunta().getSelectedItem();
-		String descripcion = pregunta.getEtiqueta(nombreEtiqueta).getDescripcion();
-		JOptionPane.showMessageDialog(null,nombreEtiqueta+ "\n"+descripcion);
+		String nombreEtiqueta = (String) askFrame.getComboBoxEtiquetasPregunta().getSelectedItem(); //Se obtine el nombre de la etiqueta seleccionada en el combobox.
+		String descripcion = pregunta.getEtiqueta(nombreEtiqueta).getDescripcion();//Se toma la etiqueta y su descripcion.
+		JOptionPane.showMessageDialog(null,nombreEtiqueta+ "\n"+descripcion);//Se muestra como Massage.
 	}
+	
 	
 	private static void mostrarTableRespuestas() {
 		

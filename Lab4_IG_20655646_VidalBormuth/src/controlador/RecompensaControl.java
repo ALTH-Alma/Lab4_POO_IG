@@ -45,14 +45,17 @@ public class RecompensaControl {
 		ocultar(); //Se cierra la ventana.
 	}
 	
-	
+	/**
+	 * Define el evento producido al presionar Btn ofrecerRecompensa.
+	 * Premite ofrecer una recompensa a traves del metodo reward.
+	 */
 	public static void eventoBtnOfrecerRecompensa() {
 		
-		try {
+		try { //Hacer... mientras no ocurra ninguna excepcion (En este caso solo seria que se ingresaran letras en vez de numeros)
 
-			int montoRecompensa = Integer.parseInt(recompensaFrame.getTextFieldPtsRecompensaOfrecida().getText());
-			int aux = controlador.InicioControl.stackService.reward(pregunta, montoRecompensa);
-			
+			int montoRecompensa = Integer.parseInt(recompensaFrame.getTextFieldPtsRecompensaOfrecida().getText()); //Se obtiene el monto de la recompensa.
+			int aux = controlador.InicioControl.stackService.reward(pregunta, montoRecompensa); //Se usa reward para ofrecerla.
+			//Dependiendo del numero que arroje reward se sabre si se realizo la recompensa y si no, la causa de esto, y se informa al usuario.
 			if(aux == -3) {
 				JOptionPane.showMessageDialog(null, "Recompensa ofrecida!!");
 				ocultar();
@@ -66,7 +69,7 @@ public class RecompensaControl {
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Por favor inserte un valor númerico");
 		}
-		recompensaFrame.getTextFieldPtsRecompensaOfrecida().setText("");
+		recompensaFrame.getTextFieldPtsRecompensaOfrecida().setText(""); //Se limpia la barra con los datos ingresados.
 		
 	}
 }
