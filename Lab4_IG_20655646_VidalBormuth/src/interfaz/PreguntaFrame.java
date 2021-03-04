@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Point;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -21,7 +23,9 @@ import javax.swing.JComboBox;
 public class PreguntaFrame extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	private JTable tableRespuestas;
+
+
 	private JLabel lblPregunta;
 	private JLabel lblDescripcion;
 	private JLabel lblFecha;
@@ -31,7 +35,11 @@ public class PreguntaFrame extends JFrame {
 	private JLabel lblVotosFavor;
 	private JLabel lblVotosContra;
 	private JComboBox comboBoxEtiquetasPregunta;
-
+	
+	
+	public JTable getTableRespuestas() {
+		return tableRespuestas;
+	}
 	
 	public JComboBox getComboBoxEtiquetasPregunta() {
 		return comboBoxEtiquetasPregunta;
@@ -69,6 +77,7 @@ public class PreguntaFrame extends JFrame {
 		return lblAutor;
 	}
 
+	
 	/**
 	 * Launch the application.
 	 */
@@ -118,15 +127,25 @@ public class PreguntaFrame extends JFrame {
 		scrollPane.setBounds(39, 229, 674, 101);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
+		tableRespuestas = new JTable();
+		tableRespuestas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+		        Point point = e.getPoint(); 
+		        int row = tableRespuestas.rowAtPoint(point); 
+		        int idRespuesta = Integer.parseInt(String.valueOf(tableRespuestas.getValueAt(row,0))); 
+		    	controlador.PreguntaControl.eventoClickRespuestaTable(idRespuesta);
+			}
+		});
+		scrollPane.setViewportView(tableRespuestas);
+		tableRespuestas.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Respuestas", "Usuario", "Fecha de publicación"
+				"ID", "Respuestas", "Usuario", "Fecha de publicaci\u00F3n"
 			}
 		));
+		tableRespuestas.getColumnModel().getColumn(0).setPreferredWidth(55);
 		
 		JLabel lblNewLabel_4 = new JLabel("Tu respuesta");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 13));
