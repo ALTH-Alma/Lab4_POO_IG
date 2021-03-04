@@ -28,8 +28,12 @@ public class RespuestaFrame extends JFrame {
 	private JLabel lblAutor;
 	private JLabel lblRespuesta;
 	private JScrollPane scrollPane;
+	private JButton btnAceptar;
 
 
+	public JButton getBtnAceptar() {
+		return btnAceptar;
+	}
 
 	public JLabel getLblRespuesta() {
 		return lblRespuesta;
@@ -83,21 +87,21 @@ public class RespuestaFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Aceptar Respuesta");
-		btnNewButton.setBackground(SystemColor.desktop);
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBounds(557, 215, 183, 35);
-		contentPane.add(btnNewButton);
+		btnAceptar = new JButton("Aceptar Respuesta");
+		btnAceptar.setBackground(SystemColor.desktop);
+		btnAceptar.setForeground(Color.BLACK);
+		btnAceptar.setBounds(557, 215, 183, 35);
+		contentPane.add(btnAceptar);
 		
-		JButton btnNewButton_1 = new JButton("Cerrar");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
+		JButton btnVolverR = new JButton("Cerrar");
+		btnVolverR.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controlador.RespuestaControl.eventoBtnVolverR();
 			}
 		});
-		btnNewButton_1.setBounds(581, 267, 159, 35);
-		contentPane.add(btnNewButton_1);
+		btnVolverR.setBounds(581, 267, 159, 35);
+		contentPane.add(btnVolverR);
 		
 		JLabel lblNewLabel_2 = new JLabel("Votos a Favor:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));

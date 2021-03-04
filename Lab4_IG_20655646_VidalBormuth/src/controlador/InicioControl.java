@@ -72,7 +72,7 @@ public class InicioControl {
 	}
 	
 
-	public static void eventoClickPreguntaTable(int idPregunta) {
+	public static void eventoClickPreguntaTable(int idPregunta, Boolean bool) {
 		Usuario userA = stackService.getStack().getActiveUser();
 
 		if( userA == null) {
@@ -81,7 +81,7 @@ public class InicioControl {
 			SesionIniciadaControl.ocultar();
 		}
 		Pregunta pregunta = stackService.getPregunta(idPregunta);
-		PreguntaControl.mostrar(pregunta);
+		PreguntaControl.mostrar(pregunta, bool);
 		
 		
 	}

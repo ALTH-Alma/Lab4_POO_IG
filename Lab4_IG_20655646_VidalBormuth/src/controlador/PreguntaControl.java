@@ -17,10 +17,11 @@ public class PreguntaControl {
 	
 	public static PreguntaFrame askFrame = new PreguntaFrame();
 	private static Pregunta pregunta;
+	private static Boolean perfil;
 	
-	public static void mostrar(Pregunta ask) {
+	public static void mostrar(Pregunta ask, Boolean bool) {
 		pregunta = ask;
-		
+		perfil = bool;
 		askFrame.getLblPregunta().setText(ask.getTitulo());
 		askFrame.getLblDescripcion().setText(ask.getContenido());
 		askFrame.getLblFecha().setText(ask.getFechaDePublicacion());
@@ -41,6 +42,8 @@ public class PreguntaControl {
 		ocultar();
 		if( userA== null) {
 			InicioControl.mostrar();
+		}else if(perfil) {
+			PerfilControl.mostrar();
 		}else {
 			SesionIniciadaControl.mostrar(userA.getName());
 		}
@@ -87,7 +90,7 @@ public class PreguntaControl {
 	
 	public static void eventoClickRespuestaTable(int idRespuesta) {
 		Respuesta respuesta = pregunta.getRespuesta(idRespuesta);
-		RespuestaControl.mostrar(respuesta);
+		RespuestaControl.mostrar(respuesta, perfil);
 	}
 	
 	public static void eventoBtnEnviarRespuesta() {

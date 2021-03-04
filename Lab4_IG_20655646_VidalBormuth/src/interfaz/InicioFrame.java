@@ -121,7 +121,7 @@ public class InicioFrame extends JFrame {
 		        Point point = e.getPoint(); 
 		        int row = tablePreguntasStack.rowAtPoint(point); 
 		        int idPregunta = Integer.parseInt(String.valueOf(tablePreguntasStack.getValueAt(row,0))); 
-		    	controlador.InicioControl.eventoClickPreguntaTable(idPregunta);
+		    	controlador.InicioControl.eventoClickPreguntaTable(idPregunta, false);
 
 			}
 		});

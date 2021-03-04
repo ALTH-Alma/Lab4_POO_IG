@@ -99,7 +99,7 @@ public class SesionIniciadaFrame extends JFrame {
 				controlador.SesionIniciadaControl.eventoBtnHacerPregunta();
 			}
 		});
-		btnRegistro.setBounds(85, 190, 238, 35);
+		btnRegistro.setBounds(85, 190, 281, 35);
 		btnRegistro.setForeground(UIManager.getColor("InternalFrame.activeTitleForeground"));
 		btnRegistro.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnRegistro.setBackground(SystemColor.desktop);
@@ -117,7 +117,7 @@ public class SesionIniciadaFrame extends JFrame {
 		        Point point = e.getPoint(); 
 		        int row = tablePreguntasStack.rowAtPoint(point); 
 		        int idPregunta = Integer.parseInt(String.valueOf(tablePreguntasStack.getValueAt(row,0))); 
-		    	controlador.InicioControl.eventoClickPreguntaTable(idPregunta);
+		    	controlador.InicioControl.eventoClickPreguntaTable(idPregunta, false);
 			}
 		});
 
@@ -142,6 +142,18 @@ public class SesionIniciadaFrame extends JFrame {
 				return columnEditables[column];
 			}
 		});
+		
+		JButton btnNewButton = new JButton("Mi perfil");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.PerfilControl.mostrar();
+			}
+		});
+		btnNewButton.setBackground(UIManager.getColor("InternalFrame.activeTitleBackground"));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton.setBounds(228, 144, 138, 35);
+		contentPane.add(btnNewButton);
 		tablePreguntasStack.getColumnModel().getColumn(0).setPreferredWidth(50);
 		tablePreguntasStack.getColumnModel().getColumn(1).setPreferredWidth(296);
 		tablePreguntasStack.getColumnModel().getColumn(2).setPreferredWidth(115);
