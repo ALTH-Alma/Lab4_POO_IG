@@ -3,7 +3,6 @@ package _TDAs;
 import java.util.ArrayList;
 import java.util.List;
 
-//import Service.MostrarListStackService;
 
 /**
  * Clase que representa un stack.

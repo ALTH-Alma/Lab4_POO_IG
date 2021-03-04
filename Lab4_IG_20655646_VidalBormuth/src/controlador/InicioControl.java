@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import _TDAs.Pregunta;
 import _TDAs.Usuario;
 import interfaz.*;
+import service.GettersStackService;
 import service.StackService;
 
 public class InicioControl {
@@ -20,7 +21,25 @@ public class InicioControl {
 	public static void setStackService(StackService stackService) {
 		InicioControl.stackService = stackService;
 	}
+	
+	public static void mostrar() {
+		inicio.setVisible(true);
+		mostrarTablaPreguntas();
+	}
+	
+	public static void ocultar() {
+		inicio.setVisible(false);
+	}
 
+	public static void eventoBtnIngresar() {
+		ocultar();
+		AccederControl.mostrar();
+	}
+	
+	public static void eventoBtnRegistrarse() {
+		ocultar();
+		RegisterControl.mostrar();
+	}
 	
 	
 	
@@ -49,26 +68,6 @@ public class InicioControl {
 					return columnEditables[column];
 				}
 			});
-			
-	}
-	
-	public static void mostrar() {
-		inicio.setVisible(true);
-		mostrarTablaPreguntas();
-	}
-	
-	public static void ocultar() {
-		inicio.setVisible(false);
-	}
-	
-	public static void eventoBtnIngresar() {
-		ocultar();
-		AccederControl.mostrar();
-	}
-	
-	public static void eventoBtnRegistrarse() {
-		ocultar();
-		RegisterControl.mostrar();
 	}
 	
 
@@ -80,7 +79,8 @@ public class InicioControl {
 		}else {
 			SesionIniciadaControl.ocultar();
 		}
-		Pregunta pregunta = stackService.getPregunta(idPregunta);
+		GettersStackService getS = new GettersStackService(stackService.getStack());
+		Pregunta pregunta = getS.getPregunta(idPregunta);
 		PreguntaControl.mostrar(pregunta, bool);
 		
 		

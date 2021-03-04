@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import _TDAs.Etiqueta;
 import _TDAs.Pregunta;
 import interfaz.GenerarPreguntaFrame;
+import service.GettersStackService;
 
 
 public class GenerarPreguntaControl {
@@ -52,7 +53,8 @@ public class GenerarPreguntaControl {
 	public static void eventoBtnAgregarEtiqueta() {
 		
 		String nombreEtiqueta = (String) generadorAsk.getComboBoxEtiquetas().getSelectedItem();
-		etiquetasNewAsk.add(InicioControl.stackService.getEtiqueta(nombreEtiqueta));
+		GettersStackService getS = new GettersStackService(InicioControl.stackService.getStack());
+		etiquetasNewAsk.add(getS.getEtiqueta(nombreEtiqueta));
 		JOptionPane.showMessageDialog(null,"Se ha gregado la etiqueta "+nombreEtiqueta+ " a la lista de etiquetas de su pregunta.");
 	}
 	
@@ -83,7 +85,8 @@ public class GenerarPreguntaControl {
 	public static void eventoMostrarContenidoEtiqueta() {
 
 		String nombreEtiqueta = (String) generadorAsk.getComboBoxEtiquetas().getSelectedItem();
-		String descripcion = InicioControl.stackService.getEtiqueta(nombreEtiqueta).getDescripcion();
+		GettersStackService getS = new GettersStackService(InicioControl.stackService.getStack());
+		String descripcion = getS.getEtiqueta(nombreEtiqueta).getDescripcion();
 		JOptionPane.showMessageDialog(null,nombreEtiqueta+ "\n"+descripcion);
 	}
 	
