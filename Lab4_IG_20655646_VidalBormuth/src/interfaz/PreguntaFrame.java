@@ -1,6 +1,5 @@
 package interfaz;
 
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -20,6 +19,12 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 
+
+/**
+ * Clase que representa la vista de la ventana que permite visualizar una pregunta del stack. 
+ * @author Alma
+ *
+ */
 public class PreguntaFrame extends JFrame {
 
 	private JPanel contentPane;
@@ -36,51 +41,82 @@ public class PreguntaFrame extends JFrame {
 	private JButton btnEnviarRespuesta;
 	
 	
-	
-	public JButton getBtnEnviarRespuesta() {
-		return btnEnviarRespuesta;
-	}
-
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-	
+	/**
+	 * Metodo de obtención para obtener la tabla que mostrara el listado de respuestas de la pregunta.
+	 * @return tabla para respuestas de pregunta.
+	 */
 	public JTable getTableRespuestas() {
 		return tableRespuestas;
 	}
-	
+
+	/**
+	 * Metodo de obtención para obtener el combobox que almacenara las etiquetas de la pregunta.
+	 * @return combobox de etiquetas.
+	 */
 	public JComboBox getComboBoxEtiquetasPregunta() {
 		return comboBoxEtiquetasPregunta;
 	}
-
+	
+	/**
+	 * Metodo de obtención para obtener la respuesta que se ingresara en el JTextArea.
+	 * @return respuesta.
+	 */
 	public JTextArea getTextAreaRespuesta() {
 		return textAreaRespuesta;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra el estado de la pregunta.
+	 * @return estado pregunta.
+	 */
 	public JLabel getLblEstado() {
 		return lblEstado;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra los votos a favor de la pregunta.
+	 * @return votos a favor de la pregunta.
+	 */
 	public JLabel getLblVotosFavor() {
 		return lblVotosFavor;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra los votos en contra de la pregunta.
+	 * @return votos en contra de la pregunta.
+	 */
 	public JLabel getLblVotosContra() {
 		return lblVotosContra;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra el titulo de la pregunta.
+	 * @return titulo de la pregunta.
+	 */
 	public JLabel getLblPregunta() {
 		return lblPregunta;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra la descripcion de la pregunta.
+	 * @return descripcion de la pregunta.
+	 */	
 	public JLabel getLblDescripcion() {
 		return lblDescripcion;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra la fecha de publicación de la pregunta.
+	 * @return fecha de publicacion de la pregunta.
+	 */
 	public JLabel getLblFecha() {
 		return lblFecha;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra el nombre del autor de la pregunta.
+	 * @return autor pregunta.
+	 */
 	public JLabel getLblAutor() {
 		return lblAutor;
 	}
@@ -138,11 +174,11 @@ public class PreguntaFrame extends JFrame {
 		tableRespuestas = new JTable();
 		tableRespuestas.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-		        Point point = e.getPoint(); 
+			public void mouseClicked(MouseEvent e) { //Event Handler para controlar el click sobre preguntas en la tabla de respuestas. Permite llevar al evento para visualizar una respuesta. 
+		        Point point = e.getPoint(); //Se optiene la columna de la tabal que se presiona.
 		        int row = tableRespuestas.rowAtPoint(point); 
-		        int idRespuesta = Integer.parseInt(String.valueOf(tableRespuestas.getValueAt(row,0))); 
-		    	controlador.PreguntaControl.eventoClickRespuestaTable(idRespuesta);
+		        int idRespuesta = Integer.parseInt(String.valueOf(tableRespuestas.getValueAt(row,0))); //De la columna se obtiene el id de la respuesta.
+		    	controlador.PreguntaControl.eventoClickRespuestaTable(idRespuesta);//Controla evento.
 			}
 		});
 		scrollPane.setViewportView(tableRespuestas);
@@ -164,7 +200,7 @@ public class PreguntaFrame extends JFrame {
 		btnVolver2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.PreguntaControl.eventoBtnVolverPregunta();
+				controlador.PreguntaControl.eventoBtnVolverPregunta(); //Event Handler para controlar el click del boton volver. Permite llevar al evento para salir de la pregunta. 
 			}
 		});
 		btnVolver2.setBounds(583, 509, 130, 33);
@@ -174,7 +210,7 @@ public class PreguntaFrame extends JFrame {
 		btnEnviarRespuesta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.PreguntaControl.eventoBtnEnviarRespuesta();
+				controlador.PreguntaControl.eventoBtnEnviarRespuesta(); //Event Handler para controlar el click del boton enviar respuesta. Permite llevar al evento para agregar una nueva respuesta a una pregunta. 
 			}
 		});
 		btnEnviarRespuesta.setBounds(39, 507, 185, 36);
@@ -213,7 +249,7 @@ public class PreguntaFrame extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.PreguntaControl.eventoBtnRecompensa();
+				controlador.PreguntaControl.eventoBtnRecompensa(); //Event Handler para controlar el click del boton recompensa. Permite llevar al evento para visualizar y ofrecer una recompensa.
 			}
 		});
 		btnNewButton.setBounds(577, 197, 136, 23);
@@ -223,7 +259,7 @@ public class PreguntaFrame extends JFrame {
 		comboBoxEtiquetasPregunta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				controlador.PreguntaControl.eventoMostrarContenidoEtiquetaPregunta();
+				controlador.PreguntaControl.eventoMostrarContenidoEtiquetaPregunta(); //Event Handler para controlar el click sobre la combobox. Permite llevar al evento para la descripcion de la etiqueta seleccionada. 
 			}
 		});
 		comboBoxEtiquetasPregunta.setBounds(392, 196, 148, 22);

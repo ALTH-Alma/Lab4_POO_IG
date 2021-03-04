@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,8 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.JTextPane;
-import javax.swing.JToggleButton;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import java.awt.Color;
@@ -18,6 +15,12 @@ import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
+/**
+ * Clase que representa la vista de la ventana que permite visualizar una respuesta. 
+ * @author Alma
+ *
+ */
 public class RespuestaFrame extends JFrame {
 
 	private JPanel contentPane;
@@ -30,31 +33,58 @@ public class RespuestaFrame extends JFrame {
 	private JScrollPane scrollPane;
 	private JButton btnAceptar;
 
-
+	/**
+	 * Metodo de obtención para obtener el boton aceptar de la ventana.
+	 * @return boton aceptar.
+	 */
 	public JButton getBtnAceptar() {
 		return btnAceptar;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra la respuesta.
+	 * @return respuesta.
+	 */
 	public JLabel getLblRespuesta() {
 		return lblRespuesta;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra el estado de la respuesta.
+	 * @return estado respuesta.
+	 */
 	public JLabel getLblEstado() {
 		return lblEstado;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra los votos a favor de la respuesta.
+	 * @return votos a favor de la respuesta.
+	 */
 	public JLabel getLblVotosFavor() {
 		return lblVotosFavor;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra los votos en contra de la respuesta.
+	 * @return votos en contra de la respuesta.
+	 */
 	public JLabel getLblVotosContra() {
 		return lblVotosContra;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra la fecha de publicación de la respuesta.
+	 * @return fecha de publicacion de la respuesta.
+	 */
 	public JLabel getLblFecha() {
 		return lblFecha;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra el nombre del autor de la respuesta.
+	 * @return autor respuesta.
+	 */
 	public JLabel getLblAutor() {
 		return lblAutor;
 	}
@@ -91,7 +121,7 @@ public class RespuestaFrame extends JFrame {
 		btnAceptar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.RespuestaControl.eventoBtnAceptar();
+				controlador.RespuestaControl.eventoBtnAceptar();  //Event Handler para controlar el click del boton aceptar. Permite llevar al evento para aceptar una respuesta de una pregunta.
 			}
 		});
 		btnAceptar.setBackground(SystemColor.desktop);
@@ -103,7 +133,7 @@ public class RespuestaFrame extends JFrame {
 		btnVolverR.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.RespuestaControl.eventoBtnVolverR();
+				controlador.RespuestaControl.eventoBtnVolverR(); //Event Handler para controlar el click del boton cerrar. Permite llevar al evento para salir de la respuesta. 
 			}
 		});
 		btnVolverR.setBounds(581, 267, 159, 35);

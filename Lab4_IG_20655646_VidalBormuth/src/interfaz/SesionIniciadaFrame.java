@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -13,7 +12,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -24,16 +22,30 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.SystemColor;
 
+
+/**
+ * Clase que representa la vista de la ventana que permite dar el inicio de una sesión iniciada de StackOverflow.. 
+ * @author Alma
+ *
+ */
 public class SesionIniciadaFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblTitulo;
 	private JTable tablePreguntasStack;
 
+	/**
+	 * Metodo de obtención para obtener la tabla que mostrara el listado de preguntas del stack.
+	 * @return tabla para preguntas stack.
+	 */
 	public JTable getTablePreguntasStack() {
 		return tablePreguntasStack;
 	}
 
+	/**
+	 * Metodo de obtención para obtener el JLabel que tendra el titulo del inicio de sesión..
+	 * @return JLabel titulo.
+	 */
 	public JLabel getLblTitulo() {
 		return lblTitulo;
 	}
@@ -75,14 +87,10 @@ public class SesionIniciadaFrame extends JFrame {
 		contentPane.add(lblTitulo);
 		
 		JButton btnIniSesion = new JButton("Cerrar sesión");
-		btnIniSesion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnIniSesion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.SesionIniciadaControl.eventoBtnCerrarSesion();
+				controlador.SesionIniciadaControl.eventoBtnCerrarSesion(); //Event Handler para controlar el click del boton Cerrar sesión. Permite llevar al evento para salir del stack.
 			}
 		});
 		
@@ -96,7 +104,7 @@ public class SesionIniciadaFrame extends JFrame {
 		btnRegistro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.SesionIniciadaControl.eventoBtnHacerPregunta();
+				controlador.SesionIniciadaControl.eventoBtnHacerPregunta(); //Event Handler para controlar el click del boton hacer una pregunta. Permite llevar al evento para agregar una nueva respuesta al stack. 
 			}
 		});
 		btnRegistro.setBounds(85, 190, 281, 35);
@@ -113,11 +121,12 @@ public class SesionIniciadaFrame extends JFrame {
 		tablePreguntasStack = new JTable();
 		tablePreguntasStack.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) { //Event Handler para controlar el click sobre preguntas en la tabla de preguntas. Permite llevar al evento para visualizar la pregunta. 
+				//Se optiene la columna de la tabal que se presiona.
 		        Point point = e.getPoint(); 
 		        int row = tablePreguntasStack.rowAtPoint(point); 
-		        int idPregunta = Integer.parseInt(String.valueOf(tablePreguntasStack.getValueAt(row,0))); 
-		    	controlador.InicioControl.eventoClickPreguntaTable(idPregunta, false);
+		        int idPregunta = Integer.parseInt(String.valueOf(tablePreguntasStack.getValueAt(row,0))); //De la columna se obtiene el id de la pregunta.
+		    	controlador.InicioControl.eventoClickPreguntaTable(idPregunta, false); //Controla evento.
 			}
 		});
 
@@ -147,13 +156,14 @@ public class SesionIniciadaFrame extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controlador.PerfilControl.mostrar();
+				controlador.PerfilControl.mostrar(); //Event Handler para controlar el click del boton mi perfil. Permite llevar al evento para mostrar el perfil del usuario activo en stack. 
 			}
 		});
 		btnNewButton.setBackground(UIManager.getColor("InternalFrame.activeTitleBackground"));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton.setBounds(228, 144, 138, 35);
 		contentPane.add(btnNewButton);
+		
 		tablePreguntasStack.getColumnModel().getColumn(0).setPreferredWidth(50);
 		tablePreguntasStack.getColumnModel().getColumn(1).setPreferredWidth(296);
 		tablePreguntasStack.getColumnModel().getColumn(2).setPreferredWidth(115);

@@ -49,7 +49,6 @@ public class SesionIniciadaControl {
 					return columnEditables[column];
 				}
 			});
-			
 	}
 	
 	public static void eventoBtnCerrarSesion() {

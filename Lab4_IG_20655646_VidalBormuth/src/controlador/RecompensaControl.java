@@ -1,32 +1,51 @@
 package controlador;
 
-
 import javax.swing.JOptionPane;
 
 import _TDAs.Pregunta;
 import _TDAs.Recompensa;
 import interfaz.RecompensaFrame;
 
+
+/**
+ * Clase que representa el controlador para la vista de  ventana que permite visualizar y entregar una recompensa. 
+ * @author Alma
+ *
+ */
 public class RecompensaControl {
-	public static RecompensaFrame recompensaFrame = new RecompensaFrame();
-	private static Pregunta pregunta;
 	
+	public static RecompensaFrame recompensaFrame = new RecompensaFrame(); //Posee una ventana de recomepnsa.
+	private static Pregunta pregunta; //Y una pregunta.
+	
+	/**
+	 * Muestra la ventana con la recompensa y la opcion de ofrecer, y recibe la pregunta que posee la recompensa.
+	 * @param ask Pregunta que posee la recompensa.
+	 */
 	public static void mostrar(Pregunta ask) {
 		pregunta = ask;
+		//Se obtiene la recompensa de la pregunta y se muestra.
 		Recompensa reward = ask.getRecompensa();
-		
 		recompensaFrame.getLblRecompensa().setText("Esta pregunta tiene una recompensa de "+Integer.toString(reward.getMontoRecompensa())+" puntos.");
-		recompensaFrame.setVisible(true);
+		recompensaFrame.setVisible(true); //Se muestra la ventana.
 	}
 	
+	/**
+	 * Cierra la ventana.
+	 */
 	public static void ocultar() {
 		recompensaFrame.setVisible(false);
 	}
 	
+	/**
+	 * Define el evento producido al presionar Btn volver.
+	 */
 	public static void eventoBtnVolverR() {
+		//Se limpia la barra que piden la recompensa.
 		recompensaFrame.getTextFieldPtsRecompensaOfrecida().setText("");
-		ocultar();
+		ocultar(); //Se cierra la ventana.
 	}
+	
+	
 	public static void eventoBtnOfrecerRecompensa() {
 		
 		try {
