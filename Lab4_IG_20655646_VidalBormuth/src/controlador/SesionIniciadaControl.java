@@ -24,11 +24,14 @@ public class SesionIniciadaControl {
 	}
 	
 	
+	/**
+	 * Permite mostrar las preguntas del stack listadas en una tabla.
+	 */
 	public static void mostrarTablaPreguntas() {
 		
 		List<Pregunta> preguntas = InicioControl.stackService.getStack().getPreguntas();
 		
-		String matriz[][] = new String[preguntas.size()][5];
+		String matriz[][] = new String[preguntas.size()][5]; //Se copian en una matriz.
 		
 		for( int i = 0; i < preguntas.size(); i++) {
 			matriz[i][0] = Integer.toString(preguntas.get(i).getId());
@@ -48,8 +51,9 @@ public class SesionIniciadaControl {
 				public boolean isCellEditable(int row, int column) {
 					return columnEditables[column];
 				}
-			});
+			});//Se modifica la tabla de la ventana añadiendo la matriz con las preguntas.
 	}
+	
 	
 	public static void eventoBtnCerrarSesion() {
 		

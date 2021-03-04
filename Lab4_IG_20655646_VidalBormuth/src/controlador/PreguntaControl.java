@@ -25,7 +25,7 @@ public class PreguntaControl {
 	
 	
 	/**
-	 *  * Permite mostrar la ventana actualizando alguno de sus datos.
+	 * Permite mostrar la ventana actualizando alguno de sus datos.
 	 * @param ask Pregunta que se muestra por la ventana.
 	 * @param bool el booleano aux para determianar personal o general.
 	 */
@@ -53,16 +53,18 @@ public class PreguntaControl {
 		askFrame.setVisible(false);
 	}
 	
-	
+	/**
+	 * Define el evento producido al presionar Btn volver.
+	 */
 	public static void eventoBtnVolverPregunta() {
 		Usuario userA = InicioControl.stackService.getStack().getActiveUser();
 		ocultar();
-		if( userA== null) {
+		if( userA== null) { //Si no existe sesion abierta se devuelve a la ventana de inicio.
 			InicioControl.mostrar();
-		}else if(perfil) {
+		}else if(perfil) { //Si existe sesion abierta y se encuntra en la tabla de preguntas propias, se devuelve a la ventana de perfil del usuario.
 			PerfilControl.mostrar();
-		}else {
-			SesionIniciadaControl.mostrar(userA.getName());
+		}else { //Si no
+			SesionIniciadaControl.mostrar(userA.getName()); //Se devuelve a la ventana de inicio de sesion activa.
 		}
 	}
 	
@@ -91,14 +93,16 @@ public class PreguntaControl {
 		JOptionPane.showMessageDialog(null,nombreEtiqueta+ "\n"+descripcion);//Se muestra como Massage.
 	}
 	
-	
+	/**
+	 * Permite mostrar las respuestas de una pregunta listadas en una tabla.
+	 */
 	private static void mostrarTableRespuestas() {
 		
-		List<Respuesta> respuestas = pregunta.getRespuestas();
+		List<Respuesta> respuestas = pregunta.getRespuestas(); //Se toman las respuestas de la pregunta.
 		
 		String matriz[][] = new String[respuestas.size()][4];
 		
-		for( int i = 0; i < respuestas.size(); i++) {
+		for( int i = 0; i < respuestas.size(); i++) { //Se copian en una matriz.
 			matriz[i][0] = Integer.toString(respuestas.get(i).getId());
 			matriz[i][1] = respuestas.get(i).getContenido();
 			matriz[i][2] = respuestas.get(i).getAutor();
@@ -110,35 +114,51 @@ public class PreguntaControl {
 				new String[] {
 					"ID", "Respuestas", "Usuario", "Fecha de publicaci\u00F3n"
 				}
-			));
+			)); //Se modifica la tabla de la ventana añadiendo la matriz con las respuestas.
 	}
+
 	
+	/**
+	 *  Define el evento producido al hacer click a alguna de las respuestas en la tabla.
+	 *  permite abrir una respuesta y mostrar sus caracteristicas..
+	 * @param idRespuesta identificador númerico de la respuesta clickeada.
+	 */
 	public static void eventoClickRespuestaTable(int idRespuesta) {
-		Respuesta respuesta = pregunta.getRespuesta(idRespuesta);
-		RespuestaControl.mostrar(pregunta, respuesta, perfil);
+		Respuesta respuesta = pregunta.getRespuesta(idRespuesta); //Toma la respuesta.
+		RespuestaControl.mostrar(pregunta, respuesta, perfil); // y se muestra la ventana de respuesta.
 	}
 	
+	
+	/**
+	 * Define el evento producido al presionar Btn enviar respuesta
+	 * Permite agregar una nueva respuesta a una pregunta utilizando el metodo answer.
+	 */
 	public static void eventoBtnEnviarRespuesta() {
 	
-		String respuesta = askFrame.getTextAreaRespuesta().getText();
+		String respuesta = askFrame.getTextAreaRespuesta().getText(); //Se obtienen los datos ingresados, como string.
 		
-		int aux = controlador.InicioControl.stackService.answer(pregunta.getId() , respuesta);
+		int aux = controlador.InicioControl.stackService.answer(pregunta.getId() , respuesta); //Se llama a answer
+		//Segun el valor entregado por answer se sabe si se realizo para respuesta y sino, se determiana las razones del fallo. 
 		if(aux == 0) {
 			JOptionPane.showMessageDialog(null, "Respuesta enviada !!");
-			mostrarTableRespuestas();
+			mostrarTableRespuestas(); //Si se realiza, se muestra la tabla de respuestas actualizadas.
 		}else if(aux == 2){
 			JOptionPane.showMessageDialog(null, "Esta pregunta se encuentra cerrado, no es posible recibir respuestas !!");
 		}else {
 			JOptionPane.showMessageDialog(null, "Sesión cerrada !! \n Para entregar una respuesta primero debe iniciar sesión.!!");
 		}
-		askFrame.getTextAreaRespuesta().setText("");
+		askFrame.getTextAreaRespuesta().setText(""); //Se limpia la barra que pide la respuesta.
 
 	}
 	
+	/**
+	 * Define el evento producido al presionar Btn recompensa.
+	 * Permite mostrar una ventanilla recompensa, esta muestra la recompensa y permite ofrecer nueva recompensa.
+	 */
 	public static void eventoBtnRecompensa() {
-		if(pregunta.getEstado().equals("Abierta.")) {//Y si la pregunta no esta abierta.
-			RecompensaControl.mostrar(pregunta);
-		}else {
+		if(pregunta.getEstado().equals("Abierta.")) {//si la pregunta no esta abierta.
+			RecompensaControl.mostrar(pregunta); //Se muestra recompensa.
+		}else {//Si no, no hace nada.
 			JOptionPane.showMessageDialog(null, "No se pueden realizar recompensas!! \n Esta pregunta ya se encuentra cerrada.");
 		}
 		

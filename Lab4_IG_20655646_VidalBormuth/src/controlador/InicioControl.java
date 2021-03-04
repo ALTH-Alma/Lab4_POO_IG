@@ -2,7 +2,6 @@ package controlador;
 import java.awt.Point;
 import java.util.List;
 
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import _TDAs.Pregunta;
@@ -11,43 +10,67 @@ import interfaz.*;
 import service.GettersStackService;
 import service.StackService;
 
+
+/**
+ * Clase que representa el controlador para la vista de la ventana inicio de stackOverflow.
+ * @author Alma
+ *
+ */
 public class InicioControl {
 	
 	
-	public static StackService stackService = new StackService();
-	public static InicioFrame inicio = new InicioFrame();
+	public static StackService stackService = new StackService(); //Y posee un stackService con el se trabajo.
+	public static InicioFrame inicio = new InicioFrame(); //Posee una ventana de inicio a stack.
 	
-	
+	/**
+	 * Constructor de la clase InicioControl.
+	 * permite contruir un inicio control a partir de un stackService.
+	 * @param stackService stackService con el se trabajo, posee el stack.
+	 */
 	public static void setStackService(StackService stackService) {
 		InicioControl.stackService = stackService;
 	}
 	
+	/**
+	 * Muestra la ventana.
+	 */
 	public static void mostrar() {
 		inicio.setVisible(true);
-		mostrarTablaPreguntas();
+		mostrarTablaPreguntas(); //muestra la tabla de preguntas del stack.
 	}
 	
+	/**
+	 * Oculta la ventana.
+	 */
 	public static void ocultar() {
 		inicio.setVisible(false);
 	}
 
+	/**
+	 * Define el evento producido al presionar Btn Ingresar.
+	 */
 	public static void eventoBtnIngresar() {
 		ocultar();
-		AccederControl.mostrar();
+		AccederControl.mostrar(); //Se muestra la ventana para acceder al stack.
 	}
 	
+	/**
+	 * Define el evento producido al presionar Btn registrarse.
+	 */
 	public static void eventoBtnRegistrarse() {
 		ocultar();
-		RegisterControl.mostrar();
+		RegisterControl.mostrar(); //Se muestra la ventana para registrarse en el stack.
 	}
 	
 	
-	
+	/**
+	 * Permite mostrar las preguntas del stack listadas en una tabla.
+	 */
 	public static void mostrarTablaPreguntas() {
 		
 		List<Pregunta> preguntas = stackService.getStack().getPreguntas();
 		
-		String matriz[][] = new String[preguntas.size()][5];
+		String matriz[][] = new String[preguntas.size()][5]; //Se copian en una matriz.
 		
 		for( int i = 0; i < preguntas.size(); i++) {
 			matriz[i][0] = Integer.toString(preguntas.get(i).getId());
@@ -67,21 +90,26 @@ public class InicioControl {
 				public boolean isCellEditable(int row, int column) {
 					return columnEditables[column];
 				}
-			});
+			}); //Se modifica la tabla de la ventana añadiendo la matriz con las preguntas.
 	}
 	
-
+	
+	/**
+	 *  Define el evento producido al hacer click a alguna de las preguntas en la tabla.
+	 *  permite abrir una pregunta y mostrar sus caracteristicas..
+	 * @param idPregunta identificador númerico de la pregunta clickeada.
+	 */
 	public static void eventoClickPreguntaTable(int idPregunta, Boolean bool) {
 		Usuario userA = stackService.getStack().getActiveUser();
 
-		if( userA == null) {
+		if( userA == null) { //Si no existe sesion abierta se oculta la ventana.
 			ocultar();
 		}else {
-			SesionIniciadaControl.ocultar();
+			SesionIniciadaControl.ocultar(); //Si existe, se oculta la ventana de inico de sesion.
 		}
 		GettersStackService getS = new GettersStackService(stackService.getStack());
-		Pregunta pregunta = getS.getPregunta(idPregunta);
-		PreguntaControl.mostrar(pregunta, bool);
+		Pregunta pregunta = getS.getPregunta(idPregunta); //Se obtiene la pregunta.
+		PreguntaControl.mostrar(pregunta, bool); //Se muestra la pregunta.
 		
 		
 	}
