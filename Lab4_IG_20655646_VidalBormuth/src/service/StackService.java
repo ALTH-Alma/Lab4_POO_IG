@@ -156,7 +156,7 @@ public class StackService {
 	 * @param montoRecompensa Monto que se le agrega a la recompensa (Debe der menor que la reputación actual del usuario al realizarce).
 	 * @param userA //Usuario activo que agrega la recompensa.
 	 */
-	public void realizarRecompensa(Pregunta pregunta, int montoRecompensa, Usuario userA) {
+	private void realizarRecompensa(Pregunta pregunta, int montoRecompensa, Usuario userA) {
 		
 		RewardService rewardService = new RewardService(pregunta.getRecompensa());
 		rewardService.aumentarRecompensa(montoRecompensa, userA.getName()); //Se realiza la recompensa.
@@ -228,4 +228,36 @@ public class StackService {
 		}
 
 	}
+	
+	/**
+	 * Permite agregar un reporte a una pregunta.
+	 * @param pregunta Pregunta a la que se le agrega el reporte.
+	 * @return un numero que sirve para identificar que pasa.
+	 */
+	public int report(Pregunta pregunta) {
+		Usuario userA = stack.getActiveUser();
+        if(pregunta == null || userA == null) { //Se la pregunta no existe o no existe usuario activo...
+        	return 1; //Se retorna 1.
+        }else {
+        	pregunta.setReportes(pregunta.getReportes()+1);
+        	return 2; //Se retorn 2.
+        }
+		
+	}
+	
+	/**
+	 * Permite agregar un reporte a una respuestas.
+	 * @param respuesta Respuesta a la que se le agrega el reporte.
+	 * @return un numero que sirve para identificar que pasa.
+	 */
+	public int report(Respuesta respuesta) {
+		
+		Usuario userA = stack.getActiveUser();
+        if(respuesta == null || userA == null) { //Se la pregunta no existe o no existe usuario activo...
+        	return 1; //Se retorna 1.
+        }else {
+        	respuesta.setReportes(respuesta.getReportes()+1);
+        	return 2; //Se retorn 2;
+        }
+    }
 }
